@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { OpenAIStream, StreamingTextResponse } from 'ai';
 import OpenAI from 'openai';
 import { GoogleGenerativeAI } from '@google/generative-ai';
@@ -83,26 +85,14 @@ async function generateWithRetry(provider: AIProvider, prompt: string, retries =
       }
 
       case 'anthropic': {
-        // Fallback to OpenAI
-        const openai = new OpenAI({
-          apiKey: getValidatedApiKey('openai'),
-        });
-
-        const systemMessage = 'You are a friendly and knowledgeable nutritionist providing contextual feedback. Consider the type of meal (breakfast, lunch, dinner, snack) when making suggestions. Keep responses encouraging and practical. Focus on both direct improvements and complementary additions that make sense for the specific meal context.';
-
-        const response = await openai.chat.completions.create({
-          model: 'gpt-3.5-turbo',
-          messages: [
-            { role: 'system', content: systemMessage },
-            { role: 'user', content: prompt }
-          ],
-          temperature: 0.7,
-          stream: true,
-        });
-
+        // Fallback to Gemini
+        const genAI = new GoogleGenerativeAI(getValidatedApiKey('gemini'));
+        const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
+        const response = await model.generateContentStream(
+          `You are a friendly and knowledgeable nutritionist providing contextual feedback. Consider the type of meal (breakfast, lunch, dinner, snack) when making suggestions. Keep responses encouraging and practical. Focus on both direct improvements and complementary additions that make sense for the specific meal context. ${prompt}`
+        );
         rateLimiter.addRequest(provider);
-        // @ts-expect-error - Known type issue with OpenAI stream
-        return new StreamingTextResponse(OpenAIStream(response));
+        return new StreamingTextResponse(GoogleGenerativeAIStream(response));
       }
 
       case 'gemini': {
