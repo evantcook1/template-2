@@ -3,14 +3,7 @@ import { AIProvider } from '../contexts/AIContext';
 // Validate API key format
 export function isValidApiKey(provider: AIProvider, apiKey: string | undefined): boolean {
   if (!apiKey) return false;
-
-  const patterns = {
-    openai: /^sk-[a-zA-Z0-9-_]{32,}$/,
-    anthropic: /^sk-ant-[a-zA-Z0-9-_]{32,}$/,
-    gemini: /^AIza[a-zA-Z0-9-_]{35}$/
-  };
-
-  return patterns[provider].test(apiKey);
+  return /^AIza[a-zA-Z0-9-_]{35}$/.test(apiKey);
 }
 
 // Mask API key for logging/display
@@ -23,16 +16,14 @@ export function maskApiKey(apiKey: string): string {
 
 // Get API key with validation
 export function getValidatedApiKey(provider: AIProvider): string {
-  const apiKeys = {
-    openai: process.env.OPENAI_API_KEY,
-    anthropic: process.env.ANTHROPIC_API_KEY,
-    gemini: process.env.GOOGLE_API_KEY
-  };
+  if (provider !== 'gemini') {
+    throw new Error('Only Gemini AI provider is supported');
+  }
 
-  const apiKey = apiKeys[provider];
+  const apiKey = process.env.GOOGLE_API_KEY;
   
   if (!isValidApiKey(provider, apiKey)) {
-    throw new Error(`Invalid or missing API key for ${provider}`);
+    throw new Error('Invalid or missing Google API key');
   }
 
   return apiKey as string;

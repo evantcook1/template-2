@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from 'react';
 
-export type AIProvider = 'openai' | 'anthropic' | 'gemini';
+export type AIProvider = 'gemini';
 export type HistoryEntry = {
   id: string;
   date: string;

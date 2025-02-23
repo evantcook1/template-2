@@ -5,19 +5,9 @@ type RateLimitConfig = {
   windowMs: number;
 };
 
-const rateLimits: Record<AIProvider, RateLimitConfig> = {
-  openai: {
-    maxRequests: 50,  // 50 requests
-    windowMs: 60000   // per minute
-  },
-  anthropic: {
-    maxRequests: 50,  // 50 requests
-    windowMs: 60000   // per minute
-  },
-  gemini: {
-    maxRequests: 60,  // 60 requests
-    windowMs: 60000   // per minute
-  }
+const RATE_LIMIT: RateLimitConfig = {
+  maxRequests: 60,  // 60 requests
+  windowMs: 60000   // per minute
 };
 
 class RateLimiter {
@@ -36,15 +26,23 @@ class RateLimiter {
   }
 
   canMakeRequest(provider: AIProvider): boolean {
+    if (provider !== 'gemini') {
+      throw new Error('Only Gemini AI provider is supported');
+    }
+
     const now = Date.now();
     const key = provider;
-    const { maxRequests, windowMs } = rateLimits[provider];
+    const { maxRequests, windowMs } = RATE_LIMIT;
 
     const validRequests = this.cleanup(key, windowMs);
     return validRequests.length < maxRequests;
   }
 
   addRequest(provider: AIProvider): void {
+    if (provider !== 'gemini') {
+      throw new Error('Only Gemini AI provider is supported');
+    }
+
     const key = provider;
     const requests = this.requests.get(key) || [];
     requests.push(Date.now());
@@ -52,7 +50,11 @@ class RateLimiter {
   }
 
   getTimeUntilNextRequest(provider: AIProvider): number {
-    const { windowMs } = rateLimits[provider];
+    if (provider !== 'gemini') {
+      throw new Error('Only Gemini AI provider is supported');
+    }
+
+    const { windowMs } = RATE_LIMIT;
     const requests = this.requests.get(provider) || [];
     if (requests.length === 0) return 0;
 

@@ -1,7 +1,6 @@
 export const runtime = 'edge';
 
-import { OpenAIStream, StreamingTextResponse } from 'ai';
-import OpenAI from 'openai';
+import { StreamingTextResponse } from 'ai';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { GoogleGenerativeAIStream } from 'ai';
 import { NextResponse } from 'next/server';
@@ -61,53 +60,18 @@ async function generateWithRetry(provider: AIProvider, prompt: string, retries =
       throw new Error(`Rate limit exceeded. Please try again in ${Math.ceil(waitTime / 1000)} seconds.`);
     }
 
-    switch (provider) {
-      case 'openai': {
-        const openai = new OpenAI({
-          apiKey: getValidatedApiKey('openai'),
-        });
-
-        const systemMessage = 'You are a friendly and knowledgeable nutritionist providing contextual feedback. Consider the type of meal (breakfast, lunch, dinner, snack) when making suggestions. Keep responses encouraging and practical. Focus on both direct improvements and complementary additions that make sense for the specific meal context.';
-
-        const response = await openai.chat.completions.create({
-          model: 'gpt-3.5-turbo',
-          messages: [
-            { role: 'system', content: systemMessage },
-            { role: 'user', content: prompt }
-          ],
-          temperature: 0.7,
-          stream: true,
-        });
-
-        rateLimiter.addRequest(provider);
-        // @ts-expect-error - Known type issue with OpenAI stream
-        return new StreamingTextResponse(OpenAIStream(response));
-      }
-
-      case 'anthropic': {
-        // Fallback to Gemini
-        const genAI = new GoogleGenerativeAI(getValidatedApiKey('gemini'));
-        const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
-        const response = await model.generateContentStream(
-          `You are a friendly and knowledgeable nutritionist providing contextual feedback. Consider the type of meal (breakfast, lunch, dinner, snack) when making suggestions. Keep responses encouraging and practical. Focus on both direct improvements and complementary additions that make sense for the specific meal context. ${prompt}`
-        );
-        rateLimiter.addRequest(provider);
-        return new StreamingTextResponse(GoogleGenerativeAIStream(response));
-      }
-
-      case 'gemini': {
-        const genAI = new GoogleGenerativeAI(getValidatedApiKey('gemini'));
-        const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
-        const response = await model.generateContentStream(
-          `You are a friendly and knowledgeable nutritionist providing contextual feedback. Consider the type of meal (breakfast, lunch, dinner, snack) when making suggestions. Keep responses encouraging and practical. Focus on both direct improvements and complementary additions that make sense for the specific meal context. ${prompt}`
-        );
-        rateLimiter.addRequest(provider);
-        return new StreamingTextResponse(GoogleGenerativeAIStream(response));
-      }
-
-      default:
-        throw new Error(`Unsupported AI provider: ${provider}`);
+    if (provider !== 'gemini') {
+      throw new Error('Only Gemini AI provider is supported');
     }
+
+    const genAI = new GoogleGenerativeAI(getValidatedApiKey('gemini'));
+    const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
+    const response = await model.generateContentStream(
+      `You are a friendly and knowledgeable nutritionist providing contextual feedback. Consider the type of meal (breakfast, lunch, dinner, snack) when making suggestions. Keep responses encouraging and practical. Focus on both direct improvements and complementary additions that make sense for the specific meal context. ${prompt}`
+    );
+    rateLimiter.addRequest(provider);
+    return new StreamingTextResponse(GoogleGenerativeAIStream(response));
+
   } catch (error: any) {
     console.error('Error in generateWithRetry:', error);
     if (retries < MAX_RETRIES && (
