@@ -1,0 +1,313 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2821
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 [12:35:10.873] Running build in Washington, D.C., USA (East) \'96 iad1\
+[12:35:10.958] Cloning github.com/evantcook1/template-2 (Branch: main, Commit: f94d58d)\
+[12:35:10.967] Skipping build cache, deployment was triggered without cache.\
+[12:35:11.227] Cloning completed: 271.000ms\
+[12:35:12.172] Running "vercel build"\
+[12:35:12.564] Vercel CLI 41.1.4\
+[12:35:12.884] Installing dependencies...\
+[12:35:17.109] npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported\
+[12:35:18.102] npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.\
+[12:35:19.436] npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead\
+[12:35:19.438] npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead\
+[12:35:19.990] npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported\
+[12:35:22.703] npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.\
+[12:35:34.097] \
+[12:35:34.098] added 649 packages in 21s\
+[12:35:34.099] \
+[12:35:34.099] 218 packages are looking for funding\
+[12:35:34.099]   run `npm fund` for details\
+[12:35:34.291] Detected Next.js version: 14.2.7\
+[12:35:34.300] Running "npm run build"\
+[12:35:34.540] \
+[12:35:34.541] > template-2@0.1.0 build\
+[12:35:34.541] > next build\
+[12:35:34.541] \
+[12:35:35.672]  \uc0\u9888  Invalid next.config.js options detected: \
+[12:35:35.673]  \uc0\u9888      Expected object, received boolean at "experimental.serverActions"\
+[12:35:35.673]  \uc0\u9888  See more info here: https://nextjs.org/docs/messages/invalid-next-config\
+[12:35:35.675]  \uc0\u9888  Server Actions are available by default now, `experimental.serverActions` option can be safely removed.\
+[12:35:35.697] Attention: Next.js now collects completely anonymous telemetry regarding usage.\
+[12:35:35.698] This information is used to shape Next.js' roadmap and prioritize features.\
+[12:35:35.701] You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:\
+[12:35:35.701] https://nextjs.org/telemetry\
+[12:35:35.701] \
+[12:35:35.822]   \uc0\u9650  Next.js 14.2.7\
+[12:35:35.822] \
+[12:35:36.067]    Creating an optimized production build ...\
+[12:35:36.839] \
+[12:35:36.839] > Build error occurred\
+[12:35:36.840] ValidationError: Invalid configuration object. Webpack has been initialized using a configuration object that does not match the API schema.\
+[12:35:36.840]  - configuration.cache.cacheDirectory: The provided value ".next/cache/webpack" is not an absolute path!\
+[12:35:36.840]    -> Base directory for the cache (defaults to node_modules/.cache/webpack).\
+[12:35:36.840]     at validate (/vercel/path0/node_modules/next/dist/compiled/schema-utils3/index.js:1:150822)\
+[12:35:36.842]     at validateSchema (/vercel/path0/node_modules/next/dist/compiled/webpack/bundle5.js:28:1422088)\
+[12:35:36.842]     at create (/vercel/path0/node_modules/next/dist/compiled/webpack/bundle5.js:28:1467703)\
+[12:35:36.842]     at webpack (/vercel/path0/node_modules/next/dist/compiled/webpack/bundle5.js:28:1468340)\
+[12:35:36.842]     at f (/vercel/path0/node_modules/next/dist/compiled/webpack/bundle5.js:28:895636)\
+[12:35:36.843]     at /vercel/path0/node_modules/next/dist/build/compiler.js:35:47\
+[12:35:36.843]     at new Promise (<anonymous>)\
+[12:35:36.843]     at runCompiler (/vercel/path0/node_modules/next/dist/build/compiler.js:34:12)\
+[12:35:36.843]     at /vercel/path0/node_modules/next/dist/build/webpack-build/impl.js:192:79\
+[12:35:36.843]     at Span.traceAsyncFn (/vercel/path0/node_modules/next/dist/trace/trace.js:154:26) \{\
+[12:35:36.843]   errors: [\
+[12:35:36.843]     \{\
+[12:35:36.843]       keyword: 'anyOf',\
+[12:35:36.843]       dataPath: '.cache',\
+[12:35:36.843]       schemaPath: '#/anyOf',\
+[12:35:36.843]       params: \{\},\
+[12:35:36.843]       message: 'should match some schema in anyOf',\
+[12:35:36.843]       schema: [Array],\
+[12:35:36.843]       parentSchema: [Object],\
+[12:35:36.843]       data: [Object],\
+[12:35:36.843]       children: [Array]\
+[12:35:36.843]     \}\
+[12:35:36.843]   ],\
+[12:35:36.843]   schema: \{\
+[12:35:36.844]     definitions: \{\
+[12:35:36.844]       Amd: [Object],\
+[12:35:36.845]       AmdContainer: [Object],\
+[12:35:36.845]       AssetFilterItemTypes: [Object],\
+[12:35:36.845]       AssetFilterTypes: [Object],\
+[12:35:36.845]       AssetGeneratorDataUrl: [Object],\
+[12:35:36.845]       AssetGeneratorDataUrlFunction: [Object],\
+[12:35:36.845]       AssetGeneratorDataUrlOptions: [Object],\
+[12:35:36.845]       AssetGeneratorOptions: [Object],\
+[12:35:36.845]       AssetInlineGeneratorOptions: [Object],\
+[12:35:36.845]       AssetModuleFilename: [Object],\
+[12:35:36.846]       AssetModuleOutputPath: [Object],\
+[12:35:36.846]       AssetParserDataUrlFunction: [Object],\
+[12:35:36.846]       AssetParserDataUrlOptions: [Object],\
+[12:35:36.846]       AssetParserOptions: [Object],\
+[12:35:36.846]       AssetResourceGeneratorOptions: [Object],\
+[12:35:36.846]       AuxiliaryComment: [Object],\
+[12:35:36.846]       Bail: [Object],\
+[12:35:36.846]       CacheOptions: [Object],\
+[12:35:36.846]       CacheOptionsNormalized: [Object],\
+[12:35:36.846]       Charset: [Object],\
+[12:35:36.846]       ChunkFilename: [Object],\
+[12:35:36.847]       ChunkFormat: [Object],\
+[12:35:36.847]       ChunkLoadTimeout: [Object],\
+[12:35:36.847]       ChunkLoading: [Object],\
+[12:35:36.849]       ChunkLoadingGlobal: [Object],\
+[12:35:36.849]       ChunkLoadingType: [Object],\
+[12:35:36.849]       Clean: [Object],\
+[12:35:36.849]       CleanOptions: [Object],\
+[12:35:36.849]       CompareBeforeEmit: [Object],\
+[12:35:36.849]       Context: [Object],\
+[12:35:36.849]       CrossOriginLoading: [Object],\
+[12:35:36.849]       CssAutoGeneratorOptions: [Object],\
+[12:35:36.849]       CssAutoParserOptions: [Object],\
+[12:35:36.849]       CssChunkFilename: [Object],\
+[12:35:36.849]       CssFilename: [Object],\
+[12:35:36.849]       CssGeneratorExportsOnly: [Object],\
+[12:35:36.849]       CssGeneratorOptions: [Object],\
+[12:35:36.849]       CssGlobalGeneratorOptions: [Object],\
+[12:35:36.849]       CssGlobalParserOptions: [Object],\
+[12:35:36.849]       CssModuleGeneratorOptions: [Object],\
+[12:35:36.849]       CssModuleParserOptions: [Object],\
+[12:35:36.849]       CssParserNamedExports: [Object],\
+[12:35:36.849]       CssParserOptions: [Object],\
+[12:35:36.849]       Dependencies: [Object],\
+[12:35:36.849]       DevServer: [Object],\
+[12:35:36.850]       DevTool: [Object],\
+[12:35:36.850]       DevtoolFallbackModuleFilenameTemplate: [Object],\
+[12:35:36.850]       DevtoolModuleFilenameTemplate: [Object],\
+[12:35:36.850]       DevtoolNamespace: [Object],\
+[12:35:36.850]       EmptyGeneratorOptions: [Object],\
+[12:35:36.850]       EmptyParserOptions: [Object],\
+[12:35:36.850]       EnabledChunkLoadingTypes: [Object],\
+[12:35:36.850]       EnabledLibraryTypes: [Object],\
+[12:35:36.850]       EnabledWasmLoadingTypes: [Object],\
+[12:35:36.850]       Entry: [Object],\
+[12:35:36.850]       EntryDescription: [Object],\
+[12:35:36.850]       EntryDescriptionNormalized: [Object],\
+[12:35:36.850]       EntryDynamic: [Object],\
+[12:35:36.850]       EntryDynamicNormalized: [Object],\
+[12:35:36.850]       EntryFilename: [Object],\
+[12:35:36.850]       EntryItem: [Object],\
+[12:35:36.850]       EntryNormalized: [Object],\
+[12:35:36.850]       EntryObject: [Object],\
+[12:35:36.850]       EntryRuntime: [Object],\
+[12:35:36.850]       EntryStatic: [Object],\
+[12:35:36.850]       EntryStaticNormalized: [Object],\
+[12:35:36.851]       EntryUnnamed: [Object],\
+[12:35:36.851]       Environment: [Object],\
+[12:35:36.851]       Experiments: [Object],\
+[12:35:36.851]       ExperimentsCommon: [Object],\
+[12:35:36.851]       ExperimentsNormalized: [Object],\
+[12:35:36.851]       Extends: [Object],\
+[12:35:36.851]       ExtendsItem: [Object],\
+[12:35:36.851]       ExternalItem: [Object],\
+[12:35:36.851]       ExternalItemFunctionData: [Object],\
+[12:35:36.851]       ExternalItemValue: [Object],\
+[12:35:36.851]       Externals: [Object],\
+[12:35:36.851]       ExternalsPresets: [Object],\
+[12:35:36.851]       ExternalsType: [Object],\
+[12:35:36.851]       Falsy: [Object],\
+[12:35:36.851]       FileCacheOptions: [Object],\
+[12:35:36.851]       Filename: [Object],\
+[12:35:36.851]       FilenameTemplate: [Object],\
+[12:35:36.851]       FilterItemTypes: [Object],\
+[12:35:36.851]       FilterTypes: [Object],\
+[12:35:36.851]       GeneratorOptionsByModuleType: [Object],\
+[12:35:36.851]       GlobalObject: [Object],\
+[12:35:36.857]       HashDigest: [Object],\
+[12:35:36.857]       HashDigestLength: [Object],\
+[12:35:36.857]       HashFunction: [Object],\
+[12:35:36.857]       HashSalt: [Object],\
+[12:35:36.857]       HotUpdateChunkFilename: [Object],\
+[12:35:36.857]       HotUpdateGlobal: [Object],\
+[12:35:36.857]       HotUpdateMainFilename: [Object],\
+[12:35:36.857]       HttpUriAllowedUris: [Object],\
+[12:35:36.857]       HttpUriOptions: [Object],\
+[12:35:36.857]       HttpUriOptionsAllowedUris: [Object],\
+[12:35:36.857]       IgnoreWarnings: [Object],\
+[12:35:36.857]       IgnoreWarningsNormalized: [Object],\
+[12:35:36.857]       Iife: [Object],\
+[12:35:36.857]       ImportFunctionName: [Object],\
+[12:35:36.858]       ImportMetaName: [Object],\
+[12:35:36.858]       InfrastructureLogging: [Object],\
+[12:35:36.858]       JavascriptParserOptions: [Object],\
+[12:35:36.858]       Layer: [Object],\
+[12:35:36.858]       LazyCompilationDefaultBackendOptions: [Object],\
+[12:35:36.858]       LazyCompilationOptions: [Object],\
+[12:35:36.858]       Library: [Object],\
+[12:35:36.858]       LibraryCustomUmdCommentObject: [Object],\
+[12:35:36.858]       LibraryCustomUmdObject: [Object],\
+[12:35:36.858]       LibraryExport: [Object],\
+[12:35:36.858]       LibraryName: [Object],\
+[12:35:36.858]       LibraryOptions: [Object],\
+[12:35:36.858]       LibraryType: [Object],\
+[12:35:36.858]       Loader: [Object],\
+[12:35:36.858]       MemoryCacheOptions: [Object],\
+[12:35:36.858]       Mode: [Object],\
+[12:35:36.858]       ModuleFilterItemTypes: [Object],\
+[12:35:36.858]       ModuleFilterTypes: [Object],\
+[12:35:36.858]       ModuleOptions: [Object],\
+[12:35:36.858]       ModuleOptionsNormalized: [Object],\
+[12:35:36.858]       Name: [Object],\
+[12:35:36.858]       NoParse: [Object],\
+[12:35:36.858]       Node: [Object],\
+[12:35:36.859]       NodeOptions: [Object],\
+[12:35:36.859]       Optimization: [Object],\
+[12:35:36.859]       OptimizationRuntimeChunk: [Object],\
+[12:35:36.859]       OptimizationRuntimeChunkNormalized: [Object],\
+[12:35:36.859]       OptimizationSplitChunksCacheGroup: [Object],\
+[12:35:36.859]       OptimizationSplitChunksGetCacheGroups: [Object],\
+[12:35:36.859]       OptimizationSplitChunksOptions: [Object],\
+[12:35:36.859]       OptimizationSplitChunksSizes: [Object],\
+[12:35:36.859]       Output: [Object],\
+[12:35:36.859]       OutputModule: [Object],\
+[12:35:36.859]       OutputNormalized: [Object],\
+[12:35:36.859]       Parallelism: [Object],\
+[12:35:36.859]       ParserOptionsByModuleType: [Object],\
+[12:35:36.859]       Path: [Object],\
+[12:35:36.859]       Pathinfo: [Object],\
+[12:35:36.859]       Performance: [Object],\
+[12:35:36.859]       PerformanceOptions: [Object],\
+[12:35:36.859]       Plugins: [Object],\
+[12:35:36.859]       Profile: [Object],\
+[12:35:36.859]       PublicPath: [Object],\
+[12:35:36.859]       RawPublicPath: [Object],\
+[12:35:36.859]       RecordsInputPath: [Object],\
+[12:35:36.859]       RecordsOutputPath: [Object],\
+[12:35:36.860]       RecordsPath: [Object],\
+[12:35:36.860]       Resolve: [Object],\
+[12:35:36.860]       ResolveAlias: [Object],\
+[12:35:36.860]       ResolveLoader: [Object],\
+[12:35:36.860]       ResolveOptions: [Object],\
+[12:35:36.860]       ResolvePluginInstance: [Object],\
+[12:35:36.860]       RuleSetCondition: [Object],\
+[12:35:36.860]       RuleSetConditionAbsolute: [Object],\
+[12:35:36.860]       RuleSetConditionOrConditions: [Object],\
+[12:35:36.860]       RuleSetConditionOrConditionsAbsolute: [Object],\
+[12:35:36.860]       RuleSetConditions: [Object],\
+[12:35:36.860]       RuleSetConditionsAbsolute: [Object],\
+[12:35:36.860]       RuleSetLoader: [Object],\
+[12:35:36.860]       RuleSetLoaderOptions: [Object],\
+[12:35:36.860]       RuleSetLogicalConditions: [Object],\
+[12:35:36.860]       RuleSetLogicalConditionsAbsolute: [Object],\
+[12:35:36.860]       RuleSetRule: [Object],\
+[12:35:36.861]       RuleSetRules: [Object],\
+[12:35:36.861]       RuleSetUse: [Object],\
+[12:35:36.861]       RuleSetUseItem: [Object],\
+[12:35:36.861]       ScriptType: [Object],\
+[12:35:36.861]       SnapshotOptions: [Object],\
+[12:35:36.861]       SourceMapFilename: [Object],\
+[12:35:36.861]       SourcePrefix: [Object],\
+[12:35:36.862]       StatsOptions: [Object],\
+[12:35:36.862]       StatsValue: [Object],\
+[12:35:36.862]       StrictModuleErrorHandling: [Object],\
+[12:35:36.862]       StrictModuleExceptionHandling: [Object],\
+[12:35:36.862]       Target: [Object],\
+[12:35:36.862]       TrustedTypes: [Object],\
+[12:35:36.862]       UmdNamedDefine: [Object],\
+[12:35:36.862]       UniqueName: [Object],\
+[12:35:36.862]       WarningFilterItemTypes: [Object],\
+[12:35:36.862]       WarningFilterTypes: [Object],\
+[12:35:36.862]       WasmLoading: [Object],\
+[12:35:36.862]       WasmLoadingType: [Object],\
+[12:35:36.862]       Watch: [Object],\
+[12:35:36.862]       WatchOptions: [Object],\
+[12:35:36.862]       WebassemblyModuleFilename: [Object],\
+[12:35:36.862]       WebpackOptionsNormalized: [Object],\
+[12:35:36.862]       WebpackPluginFunction: [Object],\
+[12:35:36.862]       WebpackPluginInstance: [Object],\
+[12:35:36.862]       WorkerPublicPath: [Object]\
+[12:35:36.862]     \},\
+[12:35:36.862]     title: 'WebpackOptions',\
+[12:35:36.862]     description: 'Options object as provided by the user.',\
+[12:35:36.862]     type: 'object',\
+[12:35:36.862]     additionalProperties: false,\
+[12:35:36.862]     properties: \{\
+[12:35:36.862]       amd: [Object],\
+[12:35:36.862]       bail: [Object],\
+[12:35:36.863]       cache: [Object],\
+[12:35:36.863]       context: [Object],\
+[12:35:36.863]       dependencies: [Object],\
+[12:35:36.863]       devServer: [Object],\
+[12:35:36.863]       devtool: [Object],\
+[12:35:36.863]       entry: [Object],\
+[12:35:36.863]       experiments: [Object],\
+[12:35:36.863]       extends: [Object],\
+[12:35:36.863]       externals: [Object],\
+[12:35:36.863]       externalsPresets: [Object],\
+[12:35:36.863]       externalsType: [Object],\
+[12:35:36.863]       ignoreWarnings: [Object],\
+[12:35:36.863]       infrastructureLogging: [Object],\
+[12:35:36.863]       loader: [Object],\
+[12:35:36.863]       mode: [Object],\
+[12:35:36.863]       module: [Object],\
+[12:35:36.863]       name: [Object],\
+[12:35:36.863]       node: [Object],\
+[12:35:36.863]       optimization: [Object],\
+[12:35:36.863]       output: [Object],\
+[12:35:36.863]       parallelism: [Object],\
+[12:35:36.863]       performance: [Object],\
+[12:35:36.863]       plugins: [Object],\
+[12:35:36.863]       profile: [Object],\
+[12:35:36.863]       recordsInputPath: [Object],\
+[12:35:36.863]       recordsOutputPath: [Object],\
+[12:35:36.863]       recordsPath: [Object],\
+[12:35:36.863]       resolve: [Object],\
+[12:35:36.863]       resolveLoader: [Object],\
+[12:35:36.863]       snapshot: [Object],\
+[12:35:36.863]       stats: [Object],\
+[12:35:36.863]       target: [Object],\
+[12:35:36.863]       watch: [Object],\
+[12:35:36.863]       watchOptions: [Object]\
+[12:35:36.863]     \}\
+[12:35:36.863]   \},\
+[12:35:36.863]   headerName: 'Webpack',\
+[12:35:36.863]   baseDataPath: 'configuration',\
+[12:35:36.863]   postFormatter: [Function: postFormatter]\
+[12:35:36.863] \}\
+[12:35:36.893] Error: Command "npm run build" exited with 1\
+[12:35:37.720] }
