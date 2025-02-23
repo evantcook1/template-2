@@ -1,8 +1,7 @@
 export const runtime = 'edge';
 
-import { StreamingTextResponse } from 'ai';
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { GoogleGenerativeAIStream } from 'ai';
+import { GoogleGenerativeAIStream, StreamingTextResponse } from 'ai';
 import { NextResponse } from 'next/server';
 import { getValidatedApiKey } from '../../lib/utils/apiKeyValidation';
 import { rateLimiter } from '../../lib/utils/rateLimiter';
@@ -60,10 +59,6 @@ async function generateWithRetry(provider: AIProvider, prompt: string, retries =
       throw new Error(`Rate limit exceeded. Please try again in ${Math.ceil(waitTime / 1000)} seconds.`);
     }
 
-    if (provider !== 'gemini') {
-      throw new Error('Only Gemini AI provider is supported');
-    }
-
     const genAI = new GoogleGenerativeAI(getValidatedApiKey('gemini'));
     const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
     const response = await model.generateContentStream(
@@ -89,7 +84,7 @@ async function generateWithRetry(provider: AIProvider, prompt: string, retries =
 export async function POST(req: Request) {
   try {
     const { text, image, feedbackTypes } = await req.json();
-    const provider = 'gemini'; // Hardcoded to Gemini as per previous changes
+    const provider = 'gemini';
 
     if (!text && !image) {
       return NextResponse.json({ error: 'No input provided' }, { status: 400 });

@@ -16,10 +16,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="light">
-      <body className={inter.className}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.className} min-h-screen bg-gray-50 dark:bg-gray-900`}>
         <AIProvider>
-          {children}
+          <main className="container mx-auto px-4 py-8">
+            {children}
+          </main>
         </AIProvider>
       </body>
     </html>
