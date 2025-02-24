@@ -42,9 +42,8 @@ export default function Home() {
     try {
       const response = await complete('', {
         body: {
-          provider: 'gemini',
-          inputMethod: inputData?.method,
-          inputData: inputData?.data,
+          text: inputData?.method.includes('text') ? inputData.data as string : null,
+          image: inputData?.method.includes('image') ? inputData.data as File : null,
           feedbackTypes
         }
       });
@@ -62,6 +61,8 @@ export default function Home() {
       setAppState('results');
     } catch (error) {
       console.error('Error getting feedback:', error);
+      setError('Failed to get feedback. Please try again.');
+      setAppState('input');
     }
   };
 
