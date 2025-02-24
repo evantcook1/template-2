@@ -7,9 +7,10 @@ type InputMethod = 'meal-image' | 'recipe-image' | 'meal-text' | 'recipe-text';
 
 interface InputSelectionScreenProps {
   onInputSubmit: (method: InputMethod, data: string | File) => void;
+  setAppState: (state: 'input' | 'feedback' | 'loading' | 'results' | 'history') => void;
 }
 
-export default function InputSelectionScreen({ onInputSubmit }: InputSelectionScreenProps) {
+export default function InputSelectionScreen({ onInputSubmit, setAppState }: InputSelectionScreenProps) {
   const [activeTab, setActiveTab] = useState<InputMethod>('meal-image');
   const [inputValue, setInputValue] = useState<string>('');
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -38,7 +39,8 @@ export default function InputSelectionScreen({ onInputSubmit }: InputSelectionSc
 
   return (
     <div className="w-full max-w-4xl mx-auto p-6">
-      <h1 className="text-3xl font-bold text-center mb-8">Get Nutritional Feedback</h1>
+      <h1 className="text-3xl font-bold text-center mb-4">Meal Mentor</h1>
+      <h2 className="text-xl text-center text-gray-600 dark:text-gray-400 mb-8">Get immediate food feedback on your meal or recipe</h2>
       
       <div className="flex flex-wrap gap-2 mb-8 justify-center">
         {tabs.map((tab) => (
@@ -51,7 +53,7 @@ export default function InputSelectionScreen({ onInputSubmit }: InputSelectionSc
             }}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all
               ${activeTab === tab.id 
-                ? 'bg-blue-500 text-white' 
+                ? 'bg-[#2E8B57] text-white' 
                 : 'bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700'
               }`}
           >
@@ -65,7 +67,7 @@ export default function InputSelectionScreen({ onInputSubmit }: InputSelectionSc
         {activeTab.includes('image') ? (
           <div className="flex flex-col items-center gap-4">
             <label 
-              className="w-full h-64 border-2 border-dashed rounded-lg flex flex-col items-center justify-center cursor-pointer hover:border-blue-500 transition-colors"
+              className="w-full h-64 border-2 border-dashed rounded-lg flex flex-col items-center justify-center cursor-pointer hover:border-[#2E8B57] transition-colors"
             >
               <ImageIcon className="w-12 h-12 mb-2 text-gray-400" />
               <span className="text-gray-500">Click to upload or drag and drop</span>
@@ -89,18 +91,27 @@ export default function InputSelectionScreen({ onInputSubmit }: InputSelectionSc
                 ? "Describe your meal here..." 
                 : "Write your recipe here..."
               }
-              className="w-full h-64 p-4 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full h-64 p-4 rounded-lg border focus:ring-2 focus:ring-[#2E8B57] focus:border-transparent"
             />
           </div>
         )}
 
-        <button
-          type="submit"
-          disabled={(!selectedFile && !inputValue.trim())}
-          className="w-full py-3 px-6 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
-        >
-          Continue to Feedback Selection
-        </button>
+        <div className="flex flex-col gap-3">
+          <button
+            type="submit"
+            disabled={(!selectedFile && !inputValue.trim())}
+            className="w-full py-3 px-6 bg-[#2E8B57] text-white rounded-lg hover:bg-[#267346] disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+          >
+            Continue to Goal Selection
+          </button>
+          <button
+            type="button"
+            onClick={() => setAppState('history')}
+            className="w-full py-3 px-6 bg-[#2E8B57] text-white rounded-lg hover:bg-[#267346] transition-colors"
+          >
+            View History
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -79,12 +79,6 @@ export default function Home() {
         {/* Header Actions */}
         <div className="w-full max-w-4xl mx-auto mb-8">
           <div className="flex justify-between items-center">
-            <button
-              onClick={() => setAppState('history')}
-              className="px-4 py-2 text-blue-500 hover:text-blue-600 transition-colors"
-            >
-              View History
-            </button>
             {appState !== 'input' && appState !== 'history' && (
               <button
                 onClick={handleReset}
@@ -107,7 +101,7 @@ export default function Home() {
 
         {/* Main Content */}
         {appState === 'input' && (
-          <InputSelectionScreen onInputSubmit={handleInputSubmit} />
+          <InputSelectionScreen onInputSubmit={handleInputSubmit} setAppState={setAppState} />
         )}
 
         {appState === 'feedback' && (
