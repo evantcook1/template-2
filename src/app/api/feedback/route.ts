@@ -20,39 +20,44 @@ const feedbackTypeContext: Record<string, string> = {
   'strength-gains': 'supporting muscle growth and recovery through optimal nutrition timing and composition'
 };
 
-const formatInstructions = `
-Please provide feedback in the following format:
+// Tool declaration for structured meal analysis
+const mealAnalysisTool = {
+  functionDeclarations: [{
+    name: "analyze_meal",
+    description: "Analyzes meal nutritional content and provides structured feedback",
+    parameters: {
+      type: "object",
+      properties: {
+        overview: {
+          type: "string",
+          description: "General overview of the meal's nutritional value"
+        },
+        estimatedNutrition: {
+          type: "object",
+          properties: {
+            calories: { type: "number" },
+            protein: { type: "number" },
+            carbs: { type: "number" },
+            fats: { type: "number" }
+          }
+        },
+        recommendations: {
+          type: "array",
+          items: { type: "string" },
+          description: "List of 3-5 specific recommendations"
+        },
+        contextualFeedback: {
+          type: "array",
+          items: { type: "string" },
+          description: "Feedback specific to selected dietary goals"
+        }
+      },
+      required: ["overview", "recommendations"]
+    }
+  }]
+};
 
-Overview:
-- Start with a friendly acknowledgment of the meal
-- Comment on its overall nutritional approach
-
-Recommendations (3-5 specific suggestions):
-- Direct modifications (e.g., "Add 1/2 cup of quinoa")
-- Complementary additions that make sense for the meal context
-- Include specific portions/measurements where applicable
-- Keep suggestions meal-time appropriate
-`;
-
-function constructPrompt(text: string | null, image: string | null, feedbackContexts: string): string {
-  if (image) {
-    return `Analyze this meal/recipe image and provide concise feedback.
-
-Focus Areas: ${feedbackContexts}
-
-${formatInstructions}`;
-  }
-
-  return `Analyze this meal and provide concise feedback.
-
-Input: ${text}
-
-Focus Areas: ${feedbackContexts}
-
-${formatInstructions}`;
-}
-
-async function generateWithRetry(provider: AIProvider, prompt: string, retries = 0) {
+async function generateWithRetry(provider: AIProvider, prompt: string, image: string | null = null, retries = 0) {
   try {
     if (!rateLimiter.canMakeRequest(provider)) {
       const waitTime = rateLimiter.getTimeUntilNextRequest(provider);
@@ -60,12 +65,40 @@ async function generateWithRetry(provider: AIProvider, prompt: string, retries =
     }
 
     const genAI = new GoogleGenerativeAI(getValidatedApiKey('gemini'));
-    const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
-    const response = await model.generateContentStream(
-      `You are a friendly and knowledgeable nutritionist providing contextual feedback. Consider the type of meal (breakfast, lunch, dinner, snack) when making suggestions. Keep responses encouraging and practical. Focus on both direct improvements and complementary additions that make sense for the specific meal context. ${prompt}`
-    );
+    const model = genAI.getGenerativeModel({ 
+      model: 'gemini-2.0-flash'
+    });
+
+    const parts = [{ text: prompt }];
+    
+    if (image) {
+      parts.push({
+        text: "Image analysis:",
+        image: {
+          data: Buffer.from(image, 'base64'),
+          mimeType: 'image/jpeg'
+        }
+      } as { text: string; image: { data: Buffer; mimeType: string } });
+    }
+
+    // Use streaming for better user experience
+    const result = await model.generateContentStream({
+      contents: [{
+        role: 'user',
+        parts
+      }],
+      generationConfig: {
+        temperature: 0.7,
+        topK: 40,
+        topP: 0.95,
+        maxOutputTokens: 1024,
+      }
+    });
+
     rateLimiter.addRequest(provider);
-    return new StreamingTextResponse(GoogleGenerativeAIStream(response));
+
+    // Return a properly formatted streaming response
+    return new StreamingTextResponse(GoogleGenerativeAIStream(result));
 
   } catch (error: any) {
     console.error('Error in generateWithRetry:', error);
@@ -75,9 +108,14 @@ async function generateWithRetry(provider: AIProvider, prompt: string, retries =
       error.status === 502    // Bad gateway
     )) {
       await new Promise(resolve => setTimeout(resolve, RETRY_DELAY * (retries + 1)));
-      return generateWithRetry(provider, prompt, retries + 1);
+      return generateWithRetry(provider, prompt, image, retries + 1);
     }
-    throw error;
+
+    // Return a proper error response that won't trigger streaming issues
+    return NextResponse.json(
+      { error: error.message || 'Failed to generate response' },
+      { status: error.status || 500 }
+    );
   }
 }
 
@@ -96,8 +134,13 @@ export async function POST(req: Request) {
       .filter(Boolean)
       .join(', ');
 
-    const prompt = constructPrompt(text, image, feedbackContexts);
-    return await generateWithRetry(provider, prompt);
+    const prompt = `As a friendly and knowledgeable nutritionist, analyze this meal${image ? ' and its image' : ''} and provide structured feedback. Consider the meal context and the following dietary goals: ${feedbackContexts}. 
+    
+    Meal Input: ${text}
+    
+    Provide specific, actionable recommendations that are practical and encouraging. Consider portion sizes, nutrient balance, and timing of the meal.`;
+
+    return await generateWithRetry(provider, prompt, image);
 
   } catch (error: any) {
     console.error('Error in feedback generation:', error);

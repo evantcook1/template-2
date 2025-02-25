@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { format } from 'date-fns';
 import { ChevronDown, ChevronUp, Trash2 } from 'lucide-react';
 import { useAI, HistoryEntry } from '../lib/contexts/AIContext';
@@ -8,16 +8,35 @@ import { useAI, HistoryEntry } from '../lib/contexts/AIContext';
 export default function HistoryView() {
   const { history, clearHistory } = useAI();
   const [expandedDates, setExpandedDates] = useState<Set<string>>(new Set());
+  const contentRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
-  // Group history entries by date
-  const groupedHistory = history.reduce((acc, entry) => {
-    const date = entry.date.split('T')[0];
-    if (!acc[date]) {
-      acc[date] = [];
-    }
-    acc[date].push(entry);
-    return acc;
-  }, {} as Record<string, HistoryEntry[]>);
+  // Format the response text with proper styling
+  const formatResponse = (response: string) => {
+    let formattedContent = response
+      // Replace markdown-style headers with styled divs
+      .replace(/\*\*(.*?)\*\*/g, '<span class="font-semibold">$1</span>')
+      // Convert bullet points to properly styled list items
+      .replace(/\* (.*?)(?=(\n|$))/g, '<li class="mb-2">$1</li>')
+      // Wrap lists in ul tags
+      .replace(/((?:<li.*?>.*?<\/li>\n?)+)/g, '<ul class="list-none space-y-2 mb-4">$1</ul>')
+      // Add spacing between sections
+      .replace(/\n\n/g, '</div><div class="mb-6">');
+
+    // Wrap in initial div
+    return `<div class="mb-6">${formattedContent}</div>`;
+  };
+
+  // Update formatting when entries change or dates are expanded
+  useEffect(() => {
+    Object.entries(contentRefs.current).forEach(([id, ref]) => {
+      if (ref && expandedDates.has(id.split('_')[0])) {
+        const entry = history.find(h => h.id === id.split('_')[1]);
+        if (entry) {
+          ref.innerHTML = formatResponse(entry.response);
+        }
+      }
+    });
+  }, [expandedDates, history]);
 
   const toggleDate = (date: string) => {
     setExpandedDates(prev => {
@@ -38,6 +57,16 @@ export default function HistoryView() {
       </div>
     );
   }
+
+  // Group history entries by date
+  const groupedHistory = history.reduce((acc, entry) => {
+    const date = entry.date.split('T')[0];
+    if (!acc[date]) {
+      acc[date] = [];
+    }
+    acc[date].push(entry);
+    return acc;
+  }, {} as Record<string, HistoryEntry[]>);
 
   return (
     <div className="space-y-4">
@@ -100,9 +129,10 @@ export default function HistoryView() {
                         </span>
                       ))}
                     </div>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 whitespace-pre-wrap">
-                      {entry.response}
-                    </p>
+                    <div 
+                      ref={el => contentRefs.current[`${date}_${entry.id}`] = el}
+                      className="prose prose-sm dark:prose-invert max-w-none"
+                    />
                   </div>
                 ))}
               </div>

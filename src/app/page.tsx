@@ -8,6 +8,7 @@ import FeedbackSelectionScreen from './components/FeedbackSelectionScreen';
 import LoadingIndicator from './components/LoadingIndicator';
 import ErrorMessage from './components/ErrorMessage';
 import HistoryView from './components/HistoryView';
+import ResultsView from './components/ResultsView';
 
 type InputMethod = 'meal-image' | 'recipe-image' | 'meal-text' | 'recipe-text';
 type AppState = 'input' | 'feedback' | 'loading' | 'results' | 'history';
@@ -113,26 +114,10 @@ export default function Home() {
         )}
 
         {appState === 'results' && completion && (
-          <div className="w-full max-w-4xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
-            <h2 className="text-2xl font-bold mb-4">Your Feedback</h2>
-            <div className="prose dark:prose-invert max-w-none mb-6">
-              <p className="text-gray-600 dark:text-gray-300 whitespace-pre-wrap">{completion}</p>
-            </div>
-            <div className="flex gap-4">
-              <button
-                onClick={handleReset}
-                className="px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
-              >
-                Start Over
-              </button>
-              <button
-                onClick={() => setAppState('history')}
-                className="px-6 py-2 border border-gray-200 dark:border-gray-700 rounded hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
-              >
-                View History
-              </button>
-            </div>
-          </div>
+          <ResultsView 
+            response={completion} 
+            onBack={handleReset}
+          />
         )}
 
         {appState === 'history' && (
