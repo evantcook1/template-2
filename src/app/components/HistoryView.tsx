@@ -50,6 +50,10 @@ export default function HistoryView() {
     });
   };
 
+  const handleRefCallback = (date: string, entryId: string, element: HTMLDivElement | null) => {
+    contentRefs.current[`${date}_${entryId}`] = element;
+  };
+
   if (history.length === 0) {
     return (
       <div className="text-center text-gray-500 dark:text-gray-400 py-8">
@@ -130,7 +134,7 @@ export default function HistoryView() {
                       ))}
                     </div>
                     <div 
-                      ref={el => contentRefs.current[`${date}_${entry.id}`] = el}
+                      ref={(el) => handleRefCallback(date, entry.id, el)}
                       className="prose prose-sm dark:prose-invert max-w-none"
                     />
                   </div>
