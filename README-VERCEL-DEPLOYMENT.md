@@ -61,6 +61,14 @@ If you're using Firebase services, you'll need to add these environment variable
 - Symptoms: Authentication or database operations fail
 - Solution: Verify all Firebase environment variables are correctly set in Vercel
 
+### AI SDK Dependency Conflicts
+- Symptoms: Build errors with type mismatches or import failures
+- Solution: Use the direct SDK for Anthropic instead of @ai-sdk/anthropic, and ensure correct import syntax for OpenAI
+- Note: There are known issues with version conflicts between the various AI SDKs. If you encounter these, consider:
+  1. Using the provider's direct SDK instead of the AI SDK wrapper
+  2. Adding version overrides in package.json
+  3. Using a simpler implementation that doesn't mix different AI providers
+
 ## Deployment Checklist
 
 - [ ] All required environment variables are set in Vercel
@@ -70,6 +78,7 @@ If you're using Firebase services, you'll need to add these environment variable
 - [ ] Client-side code is properly marked with `'use client'`
 - [ ] Server-side code doesn't use client-only APIs like `localStorage`
 - [ ] Firebase configuration uses environment variables, not hardcoded values
+- [ ] AI SDK dependencies are properly configured without version conflicts
 
 ## Support
 

@@ -1,4 +1,4 @@
-import { OpenAI } from "@ai-sdk/openai";
+import { openai } from "@ai-sdk/openai";
 import { convertToCoreMessages, streamText } from "ai";
 import { NextResponse } from "next/server";
 
@@ -20,7 +20,7 @@ export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
     const result = await streamText({
-      model: OpenAI("gpt-3.5-turbo"),
+      model: openai("gpt-3.5-turbo"),
       messages: convertToCoreMessages(messages),
       system: "You are a helpful AI assistant",
     });
