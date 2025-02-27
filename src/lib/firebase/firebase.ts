@@ -4,12 +4,12 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  apiKey: "AIzaSyCtxamzNf8jFBQURTZiVAo0CORlJLO2Nkc",
+  authDomain: "meal-mentor-a72c8.firebaseapp.com",
+  projectId: "meal-mentor-a72c8",
+  storageBucket: "meal-mentor-a72c8.firebasestorage.app",
+  messagingSenderId: "72941029647",
+  appId: "1:72941029647:web:38c6d09cc1256c648a567a"
 };
 
 // Initialize Firebase
