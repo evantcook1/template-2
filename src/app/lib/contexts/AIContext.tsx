@@ -27,33 +27,58 @@ export function AIProvider({ children }: { children: React.ReactNode }) {
   const [history, setHistory] = useState<HistoryEntry[]>([]);
   const [error, setError] = useState<string | null>(null);
 
+  // MODIFIED: Added try/catch to safely access localStorage
+  // This prevents deployment failures when localStorage is not available
   // Load history from localStorage on mount
   useEffect(() => {
-    const savedHistory = localStorage.getItem('feedback-history');
-    if (savedHistory) {
-      setHistory(JSON.parse(savedHistory));
+    try {
+      const savedHistory = localStorage.getItem('nutritionAppHistory');
+      if (savedHistory) {
+        setHistory(JSON.parse(savedHistory));
+      }
+    } catch (err) {
+      console.warn('Failed to load history from localStorage:', err);
+      // Don't set error state to avoid UI disruption
     }
   }, []);
 
+  // MODIFIED: Added try/catch to safely update localStorage
   // Save history to localStorage whenever it changes
   useEffect(() => {
-    localStorage.setItem('feedback-history', JSON.stringify(history));
+    try {
+      localStorage.setItem('nutritionAppHistory', JSON.stringify(history));
+    } catch (err) {
+      console.warn('Failed to save history to localStorage:', err);
+      // Don't set error state to avoid UI disruption
+    }
   }, [history]);
 
+  // MODIFIED: Added try/catch for localStorage operations in addToHistory
   const addToHistory = (entry: Omit<HistoryEntry, 'id' | 'date'>) => {
-    const newEntry: HistoryEntry = {
-      ...entry,
-      id: crypto.randomUUID(),
-      date: new Date().toISOString(),
-    };
-    setHistory(prev => [...prev, newEntry]);
+    try {
+      const newEntry: HistoryEntry = {
+        ...entry,
+        id: crypto.randomUUID(),
+        date: new Date().toISOString(),
+      };
+      setHistory((prev) => [newEntry, ...prev]);
+    } catch (err) {
+      console.error('Error adding to history:', err);
+      setError('Failed to save history. Please try again.');
+    }
   };
 
+  // MODIFIED: Added try/catch for localStorage operations in clearHistory
   const clearHistory = (date?: string) => {
-    if (date) {
-      setHistory(prev => prev.filter(entry => entry.date.split('T')[0] !== date));
-    } else {
-      setHistory([]);
+    try {
+      if (date) {
+        setHistory((prev) => prev.filter((entry) => !entry.date.startsWith(date)));
+      } else {
+        setHistory([]);
+      }
+    } catch (err) {
+      console.error('Error clearing history:', err);
+      setError('Failed to clear history. Please try again.');
     }
   };
 

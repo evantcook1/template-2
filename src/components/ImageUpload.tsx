@@ -37,9 +37,9 @@ export default function ImageUpload({ onImageChange }: ImageUploadProps) {
           <Image
             src={imagePreview}
             alt="Preview"
-            layout="fill"
-            objectFit="cover"
-            className="rounded-lg"
+            fill
+            className="rounded-lg object-cover"
+            sizes="(max-width: 768px) 100vw, 768px"
           />
           <button
             type="button"
