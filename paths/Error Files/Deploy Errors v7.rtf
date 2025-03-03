@@ -1,48 +1,38 @@
-[09:33:06.328] Running build in Washington, D.C., USA (East) – iad1
-[09:33:06.451] Cloning github.com/evantcook1/template-2 (Branch: main, Commit: dc29e97)
-[09:33:06.702] Cloning completed: 254.000ms
-[09:33:10.441] Restored build cache from previous deployment (CmW7ZmhEFk1xmS9zGYfjtDk7ymUq)
-[09:33:10.515] Running "vercel build"
-[09:33:10.873] Vercel CLI 41.2.2
-[09:33:11.214] Installing dependencies...
-[09:33:23.631] 
-[09:33:23.632] added 9 packages, removed 10 packages, and changed 64 packages in 12s
-[09:33:23.633] 
-[09:33:23.633] 217 packages are looking for funding
-[09:33:23.633]   run `npm fund` for details
-[09:33:23.693] Detected Next.js version: 14.2.24
-[09:33:23.699] Running "npm run build"
-[09:33:23.805] 
-[09:33:23.807] > template-2@0.1.0 build
-[09:33:23.807] > next build
-[09:33:23.807] 
-[09:33:24.378]   ▲ Next.js 14.2.24
-[09:33:24.378] 
-[09:33:24.439]    Creating an optimized production build ...
-[09:33:49.106]  ✓ Compiled successfully
-[09:33:49.107]    Linting and checking validity of types ...
-[09:33:55.284] Failed to compile.
-[09:33:55.285] 
-[09:33:55.285] ./src/app/api/openai/chat/route.ts:23:7
-[09:33:55.285] Type error: Type 'import("/vercel/path0/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1' is not assignable to type 'import("/vercel/path0/node_modules/@ai-sdk/ui-utils/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1'.
-[09:33:55.286]   The types returned by 'doStream(...)' are incompatible between these types.
-[09:33:55.286]     Type 'PromiseLike<{ stream: ReadableStream<import("/vercel/path0/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart>; rawCall: { rawPrompt: unknown; rawSettings: Record<...>; }; rawResponse?: { ...; } | undefined; request?: { ...; } | undefined; warnings?: import("/vercel/path0/node_modules/@ai-sdk/provi...' is not assignable to type 'PromiseLike<{ stream: ReadableStream<import("/vercel/path0/node_modules/@ai-sdk/ui-utils/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart>; rawCall: { ...; }; rawResponse?: { ...; } | undefined; request?: { ...; } | undefined; warnings?: import("/vercel/path0/node_modules/@ai-sdk/ui-utils/node_mo...'.
-[09:33:55.287]       Type '{ stream: ReadableStream<import("/vercel/path0/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart>; rawCall: { rawPrompt: unknown; rawSettings: Record<string, unknown>; }; rawResponse?: { ...; } | undefined; request?: { ...; } | undefined; warnings?: import("/vercel/path0/node_modules/@ai-sdk/provi...' is not assignable to type '{ stream: ReadableStream<import("/vercel/path0/node_modules/@ai-sdk/ui-utils/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart>; rawCall: { ...; }; rawResponse?: { ...; } | undefined; request?: { ...; } | undefined; warnings?: import("/vercel/path0/node_modules/@ai-sdk/ui-utils/node_modules/@ai-sd...'.
-[09:33:55.288]         Types of property 'stream' are incompatible.
-[09:33:55.288]           Type 'ReadableStream<import("/vercel/path0/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart>' is not assignable to type 'ReadableStream<import("/vercel/path0/node_modules/@ai-sdk/ui-utils/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart>'.
-[09:33:55.288]             Type 'import("/vercel/path0/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart' is not assignable to type 'import("/vercel/path0/node_modules/@ai-sdk/ui-utils/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart'.
-[09:33:55.289]               Type '{ type: "reasoning"; textDelta: string; }' is not assignable to type 'LanguageModelV1StreamPart'.
-[09:33:55.289]                 Type '{ type: "reasoning"; textDelta: string; }' is not assignable to type '{ type: "text-delta"; textDelta: string; }'.
-[09:33:55.290]                   Types of property 'type' are incompatible.
-[09:33:55.290]                     Type '"reasoning"' is not assignable to type '"text-delta"'.
-[09:33:55.290] 
-[09:33:55.290] [0m [90m 21 |[39m     [36mconst[39m { messages } [33m=[39m [36mawait[39m req[33m.[39mjson()[33m;[39m[0m
-[09:33:55.291] [0m [90m 22 |[39m     [36mconst[39m result [33m=[39m [36mawait[39m streamText({[0m
-[09:33:55.291] [0m[31m[1m>[22m[39m[90m 23 |[39m       model[33m:[39m openai([32m"gpt-3.5-turbo"[39m)[33m,[39m[0m
-[09:33:55.291] [0m [90m    |[39m       [31m[1m^[22m[39m[0m
-[09:33:55.291] [0m [90m 24 |[39m       messages[33m:[39m convertToCoreMessages(messages)[33m,[39m[0m
-[09:33:55.291] [0m [90m 25 |[39m       system[33m:[39m [32m"You are a helpful AI assistant"[39m[33m,[39m[0m
-[09:33:55.291] [0m [90m 26 |[39m     })[33m;[39m[0m
-[09:33:55.309] Next.js build worker exited with code: 1 and signal: null
-[09:33:55.328] Error: Command "npm run build" exited with 1
-[09:33:55.661] 
+[09:39:23.915] Running build in Washington, D.C., USA (East) – iad1
+[09:39:24.018] Cloning github.com/evantcook1/template-2 (Branch: main, Commit: 8a2285d)
+[09:39:24.283] Cloning completed: 264.000ms
+[09:39:27.944] Restored build cache from previous deployment (CmW7ZmhEFk1xmS9zGYfjtDk7ymUq)
+[09:39:27.995] Running "vercel build"
+[09:39:28.372] Vercel CLI 41.2.2
+[09:39:28.670] Installing dependencies...
+[09:39:42.366] 
+[09:39:42.367] added 9 packages, removed 10 packages, and changed 64 packages in 13s
+[09:39:42.367] 
+[09:39:42.367] 217 packages are looking for funding
+[09:39:42.367]   run `npm fund` for details
+[09:39:42.439] Detected Next.js version: 14.2.24
+[09:39:42.446] Running "npm run build"
+[09:39:42.555] 
+[09:39:42.555] > template-2@0.1.0 build
+[09:39:42.556] > next build
+[09:39:42.556] 
+[09:39:43.139]   ▲ Next.js 14.2.24
+[09:39:43.140] 
+[09:39:43.201]    Creating an optimized production build ...
+[09:40:08.739]  ✓ Compiled successfully
+[09:40:08.740]    Linting and checking validity of types ...
+[09:40:15.082] Failed to compile.
+[09:40:15.082] 
+[09:40:15.082] ./src/lib/contexts/AuthContext.tsx:27:25
+[09:40:15.083] Type error: 'auth' is possibly 'null'.
+[09:40:15.083] 
+[09:40:15.083] [0m [90m 25 |[39m[0m
+[09:40:15.083] [0m [90m 26 |[39m   useEffect(() [33m=>[39m {[0m
+[09:40:15.083] [0m[31m[1m>[22m[39m[90m 27 |[39m     [36mconst[39m unsubscribe [33m=[39m auth[33m.[39monAuthStateChanged((user) [33m=>[39m {[0m
+[09:40:15.083] [0m [90m    |[39m                         [31m[1m^[22m[39m[0m
+[09:40:15.083] [0m [90m 28 |[39m       setUser(user)[33m;[39m[0m
+[09:40:15.083] [0m [90m 29 |[39m       setLoading([36mfalse[39m)[33m;[39m[0m
+[09:40:15.083] [0m [90m 30 |[39m     })[33m;[39m[0m
+[09:40:15.105] Next.js build worker exited with code: 1 and signal: null
+[09:40:15.125] Error: Command "npm run build" exited with 1
+[09:40:15.429] 
