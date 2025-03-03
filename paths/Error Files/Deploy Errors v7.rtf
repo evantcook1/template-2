@@ -1,80 +1,39 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2821
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-
-\f0\fs24 \cf0 [13:53:33.022] Running build in Washington, D.C., USA (East) \'96 iad1\
-[13:53:33.159] Cloning github.com/evantcook1/template-2 (Branch: main, Commit: 1d27e42)\
-[13:53:33.176] Skipping build cache, deployment was triggered without cache.\
-[13:53:33.477] Cloning completed: 318.000ms\
-[13:53:33.797] Running "vercel build"\
-[13:53:34.190] Vercel CLI 41.2.2\
-[13:53:34.498] Installing dependencies...\
-[13:53:37.594] npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported\
-[13:53:38.538] npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.\
-[13:53:39.964] npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead\
-[13:53:39.965] npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead\
-[13:53:40.516] npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported\
-[13:53:43.238] npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.\
-[13:53:54.007] \
-[13:53:54.008] added 649 packages in 19s\
-[13:53:54.008] \
-[13:53:54.008] 217 packages are looking for funding\
-[13:53:54.009]   run `npm fund` for details\
-[13:53:54.298] Detected Next.js version: 14.2.24\
-[13:53:54.305] Running "npm run build"\
-[13:53:54.552] \
-[13:53:54.552] > template-2@0.1.0 build\
-[13:53:54.552] > next build\
-[13:53:54.552] \
-[13:53:55.743] Attention: Next.js now collects completely anonymous telemetry regarding usage.\
-[13:53:55.745] This information is used to shape Next.js' roadmap and prioritize features.\
-[13:53:55.746] You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:\
-[13:53:55.746] https://nextjs.org/telemetry\
-[13:53:55.746] \
-[13:53:55.885]   \uc0\u9650  Next.js 14.2.24\
-[13:53:55.885] \
-[13:53:56.134]    Creating an optimized production build ...\
-[13:54:12.663]  \uc0\u9888  Compiled with warnings\
-[13:54:12.663] \
-[13:54:12.663] ./src/app/api/openai/chat/route.ts\
-[13:54:12.663] Attempted import error: 'OpenAI' is not exported from '@ai-sdk/openai' (imported as 'OpenAI').\
-[13:54:12.663] \
-[13:54:12.663] Import trace for requested module:\
-[13:54:12.663] ./src/app/api/openai/chat/route.ts\
-[13:54:12.663] ./node_modules/next/dist/build/webpack/loaders/next-app-loader.js?name=app%2Fapi%2Fopenai%2Fchat%2Froute&page=%2Fapi%2Fopenai%2Fchat%2Froute&pagePath=private-next-app-dir%2Fapi%2Fopenai%2Fchat%2Froute.ts&appDir=%2Fvercel%2Fpath0%2Fsrc%2Fapp&appPaths=%2Fapi%2Fopenai%2Fchat%2Froute&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&basePath=&assetPrefix=&nextConfigOutput=&preferredRegion=&middlewareConfig=e30%3D!./src/app/api/openai/chat/route.ts?__next_edge_ssr_entry__\
-[13:54:12.663] \
-[13:54:22.321]  \uc0\u10003  Compiled successfully\
-[13:54:22.323]    Linting and checking validity of types ...\
-[13:54:25.531] \
-[13:54:25.532] ./src/components/SignInWithGoogle.tsx\
-[13:54:25.532] 13:7  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element\
-[13:54:25.532] \
-[13:54:25.532] info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules\
-[13:54:28.775] Failed to compile.\
-[13:54:28.775] \
-[13:54:28.776] ./src/app/api/anthropic/chat/route.ts:21:7\
-[13:54:28.776] Type error: Type 'import("/vercel/path0/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1' is not assignable to type 'import("/vercel/path0/node_modules/@ai-sdk/ui-utils/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1'.\
-[13:54:28.776]   The types returned by 'doStream(...)' are incompatible between these types.\
-[13:54:28.776]     Type 'PromiseLike<\{ stream: ReadableStream<import("/vercel/path0/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart>; rawCall: \{ rawPrompt: unknown; rawSettings: Record<...>; \}; rawResponse?: \{ ...; \} | undefined; request?: \{ ...; \} | undefined; warnings?: import("/vercel/path0/node_modules/@ai-sdk/provi...' is not assignable to type 'PromiseLike<\{ stream: ReadableStream<import("/vercel/path0/node_modules/@ai-sdk/ui-utils/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart>; rawCall: \{ ...; \}; rawResponse?: \{ ...; \} | undefined; request?: \{ ...; \} | undefined; warnings?: import("/vercel/path0/node_modules/@ai-sdk/ui-utils/node_mo...'.\
-[13:54:28.777]       Type '\{ stream: ReadableStream<import("/vercel/path0/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart>; rawCall: \{ rawPrompt: unknown; rawSettings: Record<string, unknown>; \}; rawResponse?: \{ ...; \} | undefined; request?: \{ ...; \} | undefined; warnings?: import("/vercel/path0/node_modules/@ai-sdk/provi...' is not assignable to type '\{ stream: ReadableStream<import("/vercel/path0/node_modules/@ai-sdk/ui-utils/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart>; rawCall: \{ ...; \}; rawResponse?: \{ ...; \} | undefined; request?: \{ ...; \} | undefined; warnings?: import("/vercel/path0/node_modules/@ai-sdk/ui-utils/node_modules/@ai-sd...'.\
-[13:54:28.778]         Types of property 'stream' are incompatible.\
-[13:54:28.778]           Type 'ReadableStream<import("/vercel/path0/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart>' is not assignable to type 'ReadableStream<import("/vercel/path0/node_modules/@ai-sdk/ui-utils/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart>'.\
-[13:54:28.778]             Type 'import("/vercel/path0/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart' is not assignable to type 'import("/vercel/path0/node_modules/@ai-sdk/ui-utils/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart'.\
-[13:54:28.779]               Type '\{ type: "reasoning"; textDelta: string; \}' is not assignable to type 'LanguageModelV1StreamPart'.\
-[13:54:28.779]                 Type '\{ type: "reasoning"; textDelta: string; \}' is not assignable to type '\{ type: "text-delta"; textDelta: string; \}'.\
-[13:54:28.779]                   Types of property 'type' are incompatible.\
-[13:54:28.779]                     Type '"reasoning"' is not assignable to type '"text-delta"'.\
-[13:54:28.779] \
-[13:54:28.779] [0m [90m 19 |[39m     [36mconst[39m \{ messages \} [33m=[39m [36mawait[39m req[33m.[39mjson()[33m;[39m[0m\
-[13:54:28.779] [0m [90m 20 |[39m     [36mconst[39m result [33m=[39m [36mawait[39m streamText(\{[0m\
-[13:54:28.780] [0m[31m[1m>[22m[39m[90m 21 |[39m       model[33m:[39m anthropic([32m"claude-3-5-sonnet-20240620"[39m)[33m,[39m[0m\
-[13:54:28.780] [0m [90m    |[39m       [31m[1m^[22m[39m[0m\
-[13:54:28.780] [0m [90m 22 |[39m       messages[33m:[39m convertToCoreMessages(messages)[33m,[39m[0m\
-[13:54:28.780] [0m [90m 23 |[39m       system[33m:[39m [32m"You are a helpful AI assistant"[39m[33m,[39m[0m\
-[13:54:28.780] [0m [90m 24 |[39m     \})[33m;[39m[0m\
-[13:54:28.801] Next.js build worker exited with code: 1 and signal: null\
-[13:54:28.819] Error: Command "npm run build" exited with 1\
-[13:54:29.169] }
+[09:30:36.544] Running build in Washington, D.C., USA (East) – iad1
+[09:30:36.720] Cloning github.com/evantcook1/template-2 (Branch: main, Commit: 2dbcbcd)
+[09:30:36.968] Cloning completed: 247.000ms
+[09:30:41.905] Restored build cache from previous deployment (CmW7ZmhEFk1xmS9zGYfjtDk7ymUq)
+[09:30:41.984] Running "vercel build"
+[09:30:42.406] Vercel CLI 41.2.2
+[09:30:42.725] Installing dependencies...
+[09:30:55.748] 
+[09:30:55.749] added 9 packages, removed 10 packages, and changed 64 packages in 13s
+[09:30:55.750] 
+[09:30:55.750] 217 packages are looking for funding
+[09:30:55.750]   run `npm fund` for details
+[09:30:55.829] Detected Next.js version: 14.2.24
+[09:30:55.833] Running "npm run build"
+[09:30:55.941] 
+[09:30:55.942] > template-2@0.1.0 build
+[09:30:55.942] > next build
+[09:30:55.942] 
+[09:30:56.578]   ▲ Next.js 14.2.24
+[09:30:56.578] 
+[09:30:56.640]    Creating an optimized production build ...
+[09:31:21.747]  ✓ Compiled successfully
+[09:31:21.749]    Linting and checking validity of types ...
+[09:31:27.943] Failed to compile.
+[09:31:27.943] 
+[09:31:27.944] ./src/app/api/feedback/route.ts:67:42
+[09:31:27.944] Type error: Argument of type 'string | null' is not assignable to parameter of type 'string'.
+[09:31:27.944]   Type 'null' is not assignable to type 'string'.
+[09:31:27.944] 
+[09:31:27.944] [0m [90m 65 |[39m     }[0m
+[09:31:27.944] [0m [90m 66 |[39m[0m
+[09:31:27.944] [0m[31m[1m>[22m[39m[90m 67 |[39m     [36mconst[39m genAI [33m=[39m [36mnew[39m [33mGoogleGenerativeAI[39m(getValidatedApiKey([32m'gemini'[39m))[33m;[39m[0m
+[09:31:27.944] [0m [90m    |[39m                                          [31m[1m^[22m[39m[0m
+[09:31:27.949] [0m [90m 68 |[39m     [36mconst[39m model [33m=[39m genAI[33m.[39mgetGenerativeModel({ [0m
+[09:31:27.949] [0m [90m 69 |[39m       model[33m:[39m [32m'gemini-2.0-flash'[39m[0m
+[09:31:27.949] [0m [90m 70 |[39m     })[33m;[39m[0m
+[09:31:27.968] Next.js build worker exited with code: 1 and signal: null
+[09:31:27.984] Error: Command "npm run build" exited with 1
+[09:31:28.323] 

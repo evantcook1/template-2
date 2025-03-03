@@ -64,7 +64,12 @@ async function generateWithRetry(provider: AIProvider, prompt: string, image: st
       throw new Error(`Rate limit exceeded. Please try again in ${Math.ceil(waitTime / 1000)} seconds.`);
     }
 
-    const genAI = new GoogleGenerativeAI(getValidatedApiKey('gemini'));
+    const apiKey = getValidatedApiKey('gemini');
+    if (!apiKey) {
+      throw new Error('Gemini API key is not configured. Please check your environment variables.');
+    }
+
+    const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({ 
       model: 'gemini-2.0-flash'
     });
