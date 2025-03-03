@@ -18,7 +18,7 @@ export default function DisclaimerPage() {
         <p>
           Users with specific dietary requirements, food allergies, medical conditions, or nutritional concerns 
           should consult with qualified healthcare professionals before making significant changes to their diet 
-          based on Meal Mentor's feedback.
+          based on Meal Mentor&apos;s feedback.
         </p>
         
         <p>

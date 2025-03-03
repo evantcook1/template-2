@@ -1,39 +1,32 @@
-[10:10:18.666] Running build in Washington, D.C., USA (East) – iad1
-[10:10:18.786] Cloning github.com/evantcook1/template-2 (Branch: main, Commit: 6b4b816)
-[10:10:19.043] Cloning completed: 257.000ms
-[10:10:22.994] Restored build cache from previous deployment (CmW7ZmhEFk1xmS9zGYfjtDk7ymUq)
-[10:10:23.073] Running "vercel build"
-[10:10:23.451] Vercel CLI 41.2.2
-[10:10:24.566] Installing dependencies...
-[10:10:38.129] 
-[10:10:38.130] added 9 packages, removed 10 packages, and changed 64 packages in 13s
-[10:10:38.131] 
-[10:10:38.131] 217 packages are looking for funding
-[10:10:38.131]   run `npm fund` for details
-[10:10:38.198] Detected Next.js version: 14.2.24
-[10:10:38.203] Running "npm run build"
-[10:10:38.319] 
-[10:10:38.319] > template-2@0.1.0 build
-[10:10:38.319] > next build
-[10:10:38.319] 
-[10:10:38.933]   ▲ Next.js 14.2.24
-[10:10:38.933] 
-[10:10:38.997]    Creating an optimized production build ...
-[10:11:06.618]  ✓ Compiled successfully
-[10:11:06.619]    Linting and checking validity of types ...
-[10:11:13.462] Failed to compile.
-[10:11:13.463] 
-[10:11:13.463] ./src/lib/firebase/firebaseUtils.ts:18:41
-[10:11:13.463] Type error: Argument of type 'Auth | null' is not assignable to parameter of type 'Auth'.
-[10:11:13.464]   Type 'null' is not assignable to type 'Auth'.
-[10:11:13.464] 
-[10:11:13.464] [0m [90m 16 |[39m[0m
-[10:11:13.464] [0m [90m 17 |[39m [90m// Auth functions[39m[0m
-[10:11:13.464] [0m[31m[1m>[22m[39m[90m 18 |[39m [36mexport[39m [36mconst[39m logoutUser [33m=[39m () [33m=>[39m signOut(auth)[33m;[39m[0m
-[10:11:13.469] [0m [90m    |[39m                                         [31m[1m^[22m[39m[0m
-[10:11:13.470] [0m [90m 19 |[39m[0m
-[10:11:13.470] [0m [90m 20 |[39m [36mexport[39m [36mconst[39m signInWithGoogle [33m=[39m [36masync[39m () [33m=>[39m {[0m
-[10:11:13.470] [0m [90m 21 |[39m   [36mconst[39m provider [33m=[39m [36mnew[39m [33mGoogleAuthProvider[39m()[33m;[39m[0m
-[10:11:13.487] Next.js build worker exited with code: 1 and signal: null
-[10:11:13.507] Error: Command "npm run build" exited with 1
-[10:11:13.866] 
+[11:49:03.642] Running build in Washington, D.C., USA (East) – iad1
+[11:49:03.762] Cloning github.com/evantcook1/template-2 (Branch: main, Commit: 14a8bcb)
+[11:49:04.147] Cloning completed: 388.000ms
+[11:49:08.907] Restored build cache from previous deployment (3ohduFXynPNh6JKH2eKcgohTKrDH)
+[11:49:08.982] Running "vercel build"
+[11:49:09.354] Vercel CLI 41.2.2
+[11:49:09.680] Installing dependencies...
+[11:49:11.241] 
+[11:49:11.242] up to date in 1s
+[11:49:11.243] 
+[11:49:11.243] 217 packages are looking for funding
+[11:49:11.243]   run `npm fund` for details
+[11:49:11.278] Detected Next.js version: 14.2.24
+[11:49:11.282] Running "npm run build"
+[11:49:11.393] 
+[11:49:11.394] > template-2@0.1.0 build
+[11:49:11.394] > next build
+[11:49:11.394] 
+[11:49:11.992]   ▲ Next.js 14.2.24
+[11:49:11.993] 
+[11:49:12.060]    Creating an optimized production build ...
+[11:49:23.746]  ✓ Compiled successfully
+[11:49:23.747]    Linting and checking validity of types ...
+[11:49:27.183] 
+[11:49:27.185] Failed to compile.
+[11:49:27.186] 
+[11:49:27.186] ./src/app/disclaimer/page.tsx
+[11:49:27.186] 21:31  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+[11:49:27.186] 
+[11:49:27.186] info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+[11:49:27.212] Error: Command "npm run build" exited with 1
+[11:49:27.491] 
