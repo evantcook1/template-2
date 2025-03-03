@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useCompletion } from 'ai/react';
-import { useAI } from './lib/contexts/AIContext';
+import { useAI } from '@/lib/contexts/AIContext';
 import InputSelectionScreen from './components/InputSelectionScreen';
 import FeedbackSelectionScreen from './components/FeedbackSelectionScreen';
 import LoadingIndicator from './components/LoadingIndicator';

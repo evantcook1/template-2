@@ -24,6 +24,7 @@ export async function POST(req: Request) {
   try {
     const { messages } = await req.json();
     
+    // Create a response from OpenAI
     const response = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo',
       stream: true,
@@ -33,8 +34,11 @@ export async function POST(req: Request) {
       ],
     });
 
-    // Convert the response into a friendly text-stream
+    // Use a type assertion to make the OpenAI response compatible with the Vercel AI SDK
+    // This is necessary due to type incompatibilities between the OpenAI SDK and Vercel AI SDK
     const stream = OpenAIStream(response as any);
+    
+    // Return a StreamingTextResponse, which is a ReadableStream
     return new StreamingTextResponse(stream);
   } catch (error) {
     console.error("Error from OpenAI API:", error);
