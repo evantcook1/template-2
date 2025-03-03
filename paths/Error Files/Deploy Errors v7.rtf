@@ -1,56 +1,32 @@
-[09:47:20.915] Running build in Washington, D.C., USA (East) – iad1
-[09:47:21.032] Cloning github.com/evantcook1/template-2 (Branch: main, Commit: 9f4e41c)
-[09:47:21.308] Cloning completed: 275.000ms
-[09:47:25.511] Restored build cache from previous deployment (CmW7ZmhEFk1xmS9zGYfjtDk7ymUq)
-[09:47:25.589] Running "vercel build"
-[09:47:25.971] Vercel CLI 41.2.2
-[09:47:26.291] Installing dependencies...
-[09:47:39.903] 
-[09:47:39.904] added 9 packages, removed 10 packages, and changed 64 packages in 13s
-[09:47:39.905] 
-[09:47:39.905] 217 packages are looking for funding
-[09:47:39.905]   run `npm fund` for details
-[09:47:39.979] Detected Next.js version: 14.2.24
-[09:47:39.989] Running "npm run build"
-[09:47:40.105] 
-[09:47:40.106] > template-2@0.1.0 build
-[09:47:40.106] > next build
-[09:47:40.106] 
-[09:47:41.155]   ▲ Next.js 14.2.24
-[09:47:41.155] 
-[09:47:41.219]    Creating an optimized production build ...
-[09:47:52.530]  ⚠ Compiled with warnings
-[09:47:52.531] 
-[09:47:52.531] ./src/lib/hooks/useAuth.ts
-[09:47:52.531] Attempted import error: 'AuthContext' is not exported from '../contexts/AuthContext' (imported as 'AuthContext').
-[09:47:52.532] 
-[09:47:52.532] Import trace for requested module:
-[09:47:52.532] ./src/lib/hooks/useAuth.ts
-[09:47:52.532] ./src/app/components/Login.tsx
-[09:47:52.532] 
-[09:48:07.612]  ⚠ Compiled with warnings
-[09:48:07.613] 
-[09:48:07.613] ./src/lib/hooks/useAuth.ts
-[09:48:07.614] Attempted import error: 'AuthContext' is not exported from '../contexts/AuthContext' (imported as 'AuthContext').
-[09:48:07.614] 
-[09:48:07.614] Import trace for requested module:
-[09:48:07.614] ./src/lib/hooks/useAuth.ts
-[09:48:07.614] ./src/app/components/Login.tsx
-[09:48:07.615] 
-[09:48:07.651]  ✓ Compiled successfully
-[09:48:07.652]    Linting and checking validity of types ...
-[09:48:14.290] Failed to compile.
-[09:48:14.291] 
-[09:48:14.291] ./src/app/components/Login.tsx:10:11
-[09:48:14.291] Type error: Property 'signInWithGoogle' does not exist on type 'ServerContextJSONValue'.
-[09:48:14.291] 
-[09:48:14.291] [0m [90m  8 |[39m[0m
-[09:48:14.291] [0m [90m  9 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mLogin[39m() {[0m
-[09:48:14.291] [0m[31m[1m>[22m[39m[90m 10 |[39m   [36mconst[39m { signInWithGoogle } [33m=[39m useAuth()[33m;[39m[0m
-[09:48:14.291] [0m [90m    |[39m           [31m[1m^[22m[39m[0m
-[09:48:14.291] [0m [90m 11 |[39m   [36mconst[39m [email[33m,[39m setEmail] [33m=[39m useState([32m""[39m)[33m;[39m[0m
-[09:48:14.291] [0m [90m 12 |[39m   [36mconst[39m [password[33m,[39m setPassword] [33m=[39m useState([32m""[39m)[33m;[39m[0m
-[09:48:14.291] [0m [90m 13 |[39m[0m
-[09:48:14.314] Next.js build worker exited with code: 1 and signal: null
-[09:48:14.334] Error: Command "npm run build" exited with 1
-[09:48:14.697] 
+[10:01:56.692] Running build in Washington, D.C., USA (East) – iad1
+[10:01:56.851] Cloning github.com/evantcook1/template-2 (Branch: main, Commit: 8d5e840)
+[10:01:57.083] Cloning completed: 235.000ms
+[10:02:01.203] Restored build cache from previous deployment (CmW7ZmhEFk1xmS9zGYfjtDk7ymUq)
+[10:02:01.280] Running "vercel build"
+[10:02:01.651] Vercel CLI 41.2.2
+[10:02:01.974] Installing dependencies...
+[10:02:15.854] 
+[10:02:15.855] added 9 packages, removed 10 packages, and changed 64 packages in 14s
+[10:02:15.856] 
+[10:02:15.856] 217 packages are looking for funding
+[10:02:15.856]   run `npm fund` for details
+[10:02:15.937] Detected Next.js version: 14.2.24
+[10:02:15.941] Running "npm run build"
+[10:02:16.056] 
+[10:02:16.056] > template-2@0.1.0 build
+[10:02:16.056] > next build
+[10:02:16.057] 
+[10:02:16.676]   ▲ Next.js 14.2.24
+[10:02:16.677] 
+[10:02:16.741]    Creating an optimized production build ...
+[10:02:28.791] Failed to compile.
+[10:02:28.791] 
+[10:02:28.791] ./src/app/layout.tsx
+[10:02:28.791] Module not found: Can't resolve './lib/contexts/AuthContext'
+[10:02:28.791] 
+[10:02:28.792] https://nextjs.org/docs/messages/module-not-found
+[10:02:28.792] 
+[10:02:28.800] 
+[10:02:28.804] > Build failed because of webpack errors
+[10:02:28.836] Error: Command "npm run build" exited with 1
+[10:02:29.200] 
