@@ -10,7 +10,10 @@ import { AIProvider } from '../../lib/contexts/AIContext';
 const MAX_RETRIES = 3;
 const RETRY_DELAY = 1000; // 1 second
 
-// Define feedback type contexts
+/**
+ * Defines the context for different feedback types
+ * Each key represents a feedback type ID, and the value is the context provided to the AI
+ */
 const feedbackTypeContext: Record<string, string> = {
   'increase-protein': 'targeting optimal protein intake for muscle synthesis (1.6-2.2g per kg of body weight)',
   'increase-fiber': 'aiming for 25-35g of daily fiber intake for digestive health',
@@ -20,7 +23,10 @@ const feedbackTypeContext: Record<string, string> = {
   'strength-gains': 'supporting muscle growth and recovery through optimal nutrition timing and composition'
 };
 
-// Tool declaration for structured meal analysis
+/**
+ * Tool declaration for structured meal analysis
+ * This defines the structure for the AI to provide structured feedback
+ */
 const mealAnalysisTool = {
   functionDeclarations: [{
     name: "analyze_meal",
@@ -57,6 +63,15 @@ const mealAnalysisTool = {
   }]
 };
 
+/**
+ * Generates a response from the Gemini AI model with retry capability
+ * 
+ * @param {AIProvider} provider - The AI provider to use (currently only 'gemini' is supported)
+ * @param {string} prompt - The text prompt to send to the AI
+ * @param {string | null} image - Optional base64-encoded image data
+ * @param {number} retries - Current retry count (used internally for recursion)
+ * @returns {Promise<Response>} A streaming response from the AI or an error response
+ */
 async function generateWithRetry(provider: AIProvider, prompt: string, image: string | null = null, retries = 0) {
   try {
     if (!rateLimiter.canMakeRequest(provider)) {
@@ -74,16 +89,19 @@ async function generateWithRetry(provider: AIProvider, prompt: string, image: st
       model: 'gemini-2.0-flash'
     });
 
-    const parts = [{ text: prompt }];
+    const parts = [];
     
+    // Add the text prompt
+    parts.push({ text: prompt });
+    
+    // Add the image if provided
     if (image) {
       parts.push({
-        text: "Image analysis:",
-        image: {
-          data: Buffer.from(image, 'base64'),
+        inlineData: {
+          data: image,
           mimeType: 'image/jpeg'
         }
-      } as { text: string; image: { data: Buffer; mimeType: string } });
+      });
     }
 
     // Use streaming for better user experience
@@ -124,6 +142,13 @@ async function generateWithRetry(provider: AIProvider, prompt: string, image: st
   }
 }
 
+/**
+ * POST handler for the feedback API endpoint
+ * Processes meal/recipe input (text or image) and generates nutritional feedback
+ * 
+ * @param {Request} req - The incoming request object
+ * @returns {Promise<Response>} A streaming response with AI-generated feedback or an error response
+ */
 export async function POST(req: Request) {
   try {
     const { text, image, feedbackTypes } = await req.json();
