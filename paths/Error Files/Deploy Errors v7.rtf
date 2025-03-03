@@ -1,39 +1,48 @@
-[09:30:36.544] Running build in Washington, D.C., USA (East) – iad1
-[09:30:36.720] Cloning github.com/evantcook1/template-2 (Branch: main, Commit: 2dbcbcd)
-[09:30:36.968] Cloning completed: 247.000ms
-[09:30:41.905] Restored build cache from previous deployment (CmW7ZmhEFk1xmS9zGYfjtDk7ymUq)
-[09:30:41.984] Running "vercel build"
-[09:30:42.406] Vercel CLI 41.2.2
-[09:30:42.725] Installing dependencies...
-[09:30:55.748] 
-[09:30:55.749] added 9 packages, removed 10 packages, and changed 64 packages in 13s
-[09:30:55.750] 
-[09:30:55.750] 217 packages are looking for funding
-[09:30:55.750]   run `npm fund` for details
-[09:30:55.829] Detected Next.js version: 14.2.24
-[09:30:55.833] Running "npm run build"
-[09:30:55.941] 
-[09:30:55.942] > template-2@0.1.0 build
-[09:30:55.942] > next build
-[09:30:55.942] 
-[09:30:56.578]   ▲ Next.js 14.2.24
-[09:30:56.578] 
-[09:30:56.640]    Creating an optimized production build ...
-[09:31:21.747]  ✓ Compiled successfully
-[09:31:21.749]    Linting and checking validity of types ...
-[09:31:27.943] Failed to compile.
-[09:31:27.943] 
-[09:31:27.944] ./src/app/api/feedback/route.ts:67:42
-[09:31:27.944] Type error: Argument of type 'string | null' is not assignable to parameter of type 'string'.
-[09:31:27.944]   Type 'null' is not assignable to type 'string'.
-[09:31:27.944] 
-[09:31:27.944] [0m [90m 65 |[39m     }[0m
-[09:31:27.944] [0m [90m 66 |[39m[0m
-[09:31:27.944] [0m[31m[1m>[22m[39m[90m 67 |[39m     [36mconst[39m genAI [33m=[39m [36mnew[39m [33mGoogleGenerativeAI[39m(getValidatedApiKey([32m'gemini'[39m))[33m;[39m[0m
-[09:31:27.944] [0m [90m    |[39m                                          [31m[1m^[22m[39m[0m
-[09:31:27.949] [0m [90m 68 |[39m     [36mconst[39m model [33m=[39m genAI[33m.[39mgetGenerativeModel({ [0m
-[09:31:27.949] [0m [90m 69 |[39m       model[33m:[39m [32m'gemini-2.0-flash'[39m[0m
-[09:31:27.949] [0m [90m 70 |[39m     })[33m;[39m[0m
-[09:31:27.968] Next.js build worker exited with code: 1 and signal: null
-[09:31:27.984] Error: Command "npm run build" exited with 1
-[09:31:28.323] 
+[09:33:06.328] Running build in Washington, D.C., USA (East) – iad1
+[09:33:06.451] Cloning github.com/evantcook1/template-2 (Branch: main, Commit: dc29e97)
+[09:33:06.702] Cloning completed: 254.000ms
+[09:33:10.441] Restored build cache from previous deployment (CmW7ZmhEFk1xmS9zGYfjtDk7ymUq)
+[09:33:10.515] Running "vercel build"
+[09:33:10.873] Vercel CLI 41.2.2
+[09:33:11.214] Installing dependencies...
+[09:33:23.631] 
+[09:33:23.632] added 9 packages, removed 10 packages, and changed 64 packages in 12s
+[09:33:23.633] 
+[09:33:23.633] 217 packages are looking for funding
+[09:33:23.633]   run `npm fund` for details
+[09:33:23.693] Detected Next.js version: 14.2.24
+[09:33:23.699] Running "npm run build"
+[09:33:23.805] 
+[09:33:23.807] > template-2@0.1.0 build
+[09:33:23.807] > next build
+[09:33:23.807] 
+[09:33:24.378]   ▲ Next.js 14.2.24
+[09:33:24.378] 
+[09:33:24.439]    Creating an optimized production build ...
+[09:33:49.106]  ✓ Compiled successfully
+[09:33:49.107]    Linting and checking validity of types ...
+[09:33:55.284] Failed to compile.
+[09:33:55.285] 
+[09:33:55.285] ./src/app/api/openai/chat/route.ts:23:7
+[09:33:55.285] Type error: Type 'import("/vercel/path0/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1' is not assignable to type 'import("/vercel/path0/node_modules/@ai-sdk/ui-utils/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1'.
+[09:33:55.286]   The types returned by 'doStream(...)' are incompatible between these types.
+[09:33:55.286]     Type 'PromiseLike<{ stream: ReadableStream<import("/vercel/path0/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart>; rawCall: { rawPrompt: unknown; rawSettings: Record<...>; }; rawResponse?: { ...; } | undefined; request?: { ...; } | undefined; warnings?: import("/vercel/path0/node_modules/@ai-sdk/provi...' is not assignable to type 'PromiseLike<{ stream: ReadableStream<import("/vercel/path0/node_modules/@ai-sdk/ui-utils/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart>; rawCall: { ...; }; rawResponse?: { ...; } | undefined; request?: { ...; } | undefined; warnings?: import("/vercel/path0/node_modules/@ai-sdk/ui-utils/node_mo...'.
+[09:33:55.287]       Type '{ stream: ReadableStream<import("/vercel/path0/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart>; rawCall: { rawPrompt: unknown; rawSettings: Record<string, unknown>; }; rawResponse?: { ...; } | undefined; request?: { ...; } | undefined; warnings?: import("/vercel/path0/node_modules/@ai-sdk/provi...' is not assignable to type '{ stream: ReadableStream<import("/vercel/path0/node_modules/@ai-sdk/ui-utils/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart>; rawCall: { ...; }; rawResponse?: { ...; } | undefined; request?: { ...; } | undefined; warnings?: import("/vercel/path0/node_modules/@ai-sdk/ui-utils/node_modules/@ai-sd...'.
+[09:33:55.288]         Types of property 'stream' are incompatible.
+[09:33:55.288]           Type 'ReadableStream<import("/vercel/path0/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart>' is not assignable to type 'ReadableStream<import("/vercel/path0/node_modules/@ai-sdk/ui-utils/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart>'.
+[09:33:55.288]             Type 'import("/vercel/path0/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart' is not assignable to type 'import("/vercel/path0/node_modules/@ai-sdk/ui-utils/node_modules/@ai-sdk/provider/dist/index").LanguageModelV1StreamPart'.
+[09:33:55.289]               Type '{ type: "reasoning"; textDelta: string; }' is not assignable to type 'LanguageModelV1StreamPart'.
+[09:33:55.289]                 Type '{ type: "reasoning"; textDelta: string; }' is not assignable to type '{ type: "text-delta"; textDelta: string; }'.
+[09:33:55.290]                   Types of property 'type' are incompatible.
+[09:33:55.290]                     Type '"reasoning"' is not assignable to type '"text-delta"'.
+[09:33:55.290] 
+[09:33:55.290] [0m [90m 21 |[39m     [36mconst[39m { messages } [33m=[39m [36mawait[39m req[33m.[39mjson()[33m;[39m[0m
+[09:33:55.291] [0m [90m 22 |[39m     [36mconst[39m result [33m=[39m [36mawait[39m streamText({[0m
+[09:33:55.291] [0m[31m[1m>[22m[39m[90m 23 |[39m       model[33m:[39m openai([32m"gpt-3.5-turbo"[39m)[33m,[39m[0m
+[09:33:55.291] [0m [90m    |[39m       [31m[1m^[22m[39m[0m
+[09:33:55.291] [0m [90m 24 |[39m       messages[33m:[39m convertToCoreMessages(messages)[33m,[39m[0m
+[09:33:55.291] [0m [90m 25 |[39m       system[33m:[39m [32m"You are a helpful AI assistant"[39m[33m,[39m[0m
+[09:33:55.291] [0m [90m 26 |[39m     })[33m;[39m[0m
+[09:33:55.309] Next.js build worker exited with code: 1 and signal: null
+[09:33:55.328] Error: Command "npm run build" exited with 1
+[09:33:55.661] 

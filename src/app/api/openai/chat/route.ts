@@ -1,8 +1,12 @@
-import { openai } from "@ai-sdk/openai";
-import { convertToCoreMessages, streamText } from "ai";
-import { NextResponse } from "next/server";
+import { OpenAIStream, StreamingTextResponse } from 'ai';
+import OpenAI from 'openai';
+import { NextResponse } from 'next/server';
 
-export const runtime = "edge";
+export const runtime = 'edge';
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
 export async function POST(req: Request) {
   // Return a user-friendly error if the API key is not set
@@ -19,15 +23,21 @@ export async function POST(req: Request) {
 
   try {
     const { messages } = await req.json();
-    const result = await streamText({
-      model: openai("gpt-3.5-turbo"),
-      messages: convertToCoreMessages(messages),
-      system: "You are a helpful AI assistant",
+    
+    const response = await openai.chat.completions.create({
+      model: 'gpt-3.5-turbo',
+      stream: true,
+      messages: [
+        { role: 'system', content: 'You are a helpful AI assistant' },
+        ...messages
+      ],
     });
 
-    return result.toDataStreamResponse();
+    // Convert the response into a friendly text-stream
+    const stream = OpenAIStream(response as any);
+    return new StreamingTextResponse(stream);
   } catch (error) {
     console.error("Error from OpenAI API:", error);
-    return NextResponse.json({ error: (error as Error).message }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to generate response' }, { status: 500 });
   }
 } 
