@@ -1,4 +1,4 @@
-import { AIProvider } from '../contexts/AIContext';
+import { AIProvider } from '@/lib/contexts/AIContext';
 
 type RateLimitConfig = {
   maxRequests: number;

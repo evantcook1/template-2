@@ -1,4 +1,4 @@
-import { AIProvider } from '../contexts/AIContext';
+import { AIProvider } from '@/lib/contexts/AIContext';
 
 // Validate API key format
 export function isValidApiKey(provider: AIProvider, apiKey: string | undefined): boolean {
