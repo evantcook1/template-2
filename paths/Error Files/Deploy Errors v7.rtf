@@ -1,38 +1,56 @@
-[09:39:23.915] Running build in Washington, D.C., USA (East) – iad1
-[09:39:24.018] Cloning github.com/evantcook1/template-2 (Branch: main, Commit: 8a2285d)
-[09:39:24.283] Cloning completed: 264.000ms
-[09:39:27.944] Restored build cache from previous deployment (CmW7ZmhEFk1xmS9zGYfjtDk7ymUq)
-[09:39:27.995] Running "vercel build"
-[09:39:28.372] Vercel CLI 41.2.2
-[09:39:28.670] Installing dependencies...
-[09:39:42.366] 
-[09:39:42.367] added 9 packages, removed 10 packages, and changed 64 packages in 13s
-[09:39:42.367] 
-[09:39:42.367] 217 packages are looking for funding
-[09:39:42.367]   run `npm fund` for details
-[09:39:42.439] Detected Next.js version: 14.2.24
-[09:39:42.446] Running "npm run build"
-[09:39:42.555] 
-[09:39:42.555] > template-2@0.1.0 build
-[09:39:42.556] > next build
-[09:39:42.556] 
-[09:39:43.139]   ▲ Next.js 14.2.24
-[09:39:43.140] 
-[09:39:43.201]    Creating an optimized production build ...
-[09:40:08.739]  ✓ Compiled successfully
-[09:40:08.740]    Linting and checking validity of types ...
-[09:40:15.082] Failed to compile.
-[09:40:15.082] 
-[09:40:15.082] ./src/lib/contexts/AuthContext.tsx:27:25
-[09:40:15.083] Type error: 'auth' is possibly 'null'.
-[09:40:15.083] 
-[09:40:15.083] [0m [90m 25 |[39m[0m
-[09:40:15.083] [0m [90m 26 |[39m   useEffect(() [33m=>[39m {[0m
-[09:40:15.083] [0m[31m[1m>[22m[39m[90m 27 |[39m     [36mconst[39m unsubscribe [33m=[39m auth[33m.[39monAuthStateChanged((user) [33m=>[39m {[0m
-[09:40:15.083] [0m [90m    |[39m                         [31m[1m^[22m[39m[0m
-[09:40:15.083] [0m [90m 28 |[39m       setUser(user)[33m;[39m[0m
-[09:40:15.083] [0m [90m 29 |[39m       setLoading([36mfalse[39m)[33m;[39m[0m
-[09:40:15.083] [0m [90m 30 |[39m     })[33m;[39m[0m
-[09:40:15.105] Next.js build worker exited with code: 1 and signal: null
-[09:40:15.125] Error: Command "npm run build" exited with 1
-[09:40:15.429] 
+[09:47:20.915] Running build in Washington, D.C., USA (East) – iad1
+[09:47:21.032] Cloning github.com/evantcook1/template-2 (Branch: main, Commit: 9f4e41c)
+[09:47:21.308] Cloning completed: 275.000ms
+[09:47:25.511] Restored build cache from previous deployment (CmW7ZmhEFk1xmS9zGYfjtDk7ymUq)
+[09:47:25.589] Running "vercel build"
+[09:47:25.971] Vercel CLI 41.2.2
+[09:47:26.291] Installing dependencies...
+[09:47:39.903] 
+[09:47:39.904] added 9 packages, removed 10 packages, and changed 64 packages in 13s
+[09:47:39.905] 
+[09:47:39.905] 217 packages are looking for funding
+[09:47:39.905]   run `npm fund` for details
+[09:47:39.979] Detected Next.js version: 14.2.24
+[09:47:39.989] Running "npm run build"
+[09:47:40.105] 
+[09:47:40.106] > template-2@0.1.0 build
+[09:47:40.106] > next build
+[09:47:40.106] 
+[09:47:41.155]   ▲ Next.js 14.2.24
+[09:47:41.155] 
+[09:47:41.219]    Creating an optimized production build ...
+[09:47:52.530]  ⚠ Compiled with warnings
+[09:47:52.531] 
+[09:47:52.531] ./src/lib/hooks/useAuth.ts
+[09:47:52.531] Attempted import error: 'AuthContext' is not exported from '../contexts/AuthContext' (imported as 'AuthContext').
+[09:47:52.532] 
+[09:47:52.532] Import trace for requested module:
+[09:47:52.532] ./src/lib/hooks/useAuth.ts
+[09:47:52.532] ./src/app/components/Login.tsx
+[09:47:52.532] 
+[09:48:07.612]  ⚠ Compiled with warnings
+[09:48:07.613] 
+[09:48:07.613] ./src/lib/hooks/useAuth.ts
+[09:48:07.614] Attempted import error: 'AuthContext' is not exported from '../contexts/AuthContext' (imported as 'AuthContext').
+[09:48:07.614] 
+[09:48:07.614] Import trace for requested module:
+[09:48:07.614] ./src/lib/hooks/useAuth.ts
+[09:48:07.614] ./src/app/components/Login.tsx
+[09:48:07.615] 
+[09:48:07.651]  ✓ Compiled successfully
+[09:48:07.652]    Linting and checking validity of types ...
+[09:48:14.290] Failed to compile.
+[09:48:14.291] 
+[09:48:14.291] ./src/app/components/Login.tsx:10:11
+[09:48:14.291] Type error: Property 'signInWithGoogle' does not exist on type 'ServerContextJSONValue'.
+[09:48:14.291] 
+[09:48:14.291] [0m [90m  8 |[39m[0m
+[09:48:14.291] [0m [90m  9 |[39m [36mexport[39m [36mdefault[39m [36mfunction[39m [33mLogin[39m() {[0m
+[09:48:14.291] [0m[31m[1m>[22m[39m[90m 10 |[39m   [36mconst[39m { signInWithGoogle } [33m=[39m useAuth()[33m;[39m[0m
+[09:48:14.291] [0m [90m    |[39m           [31m[1m^[22m[39m[0m
+[09:48:14.291] [0m [90m 11 |[39m   [36mconst[39m [email[33m,[39m setEmail] [33m=[39m useState([32m""[39m)[33m;[39m[0m
+[09:48:14.291] [0m [90m 12 |[39m   [36mconst[39m [password[33m,[39m setPassword] [33m=[39m useState([32m""[39m)[33m;[39m[0m
+[09:48:14.291] [0m [90m 13 |[39m[0m
+[09:48:14.314] Next.js build worker exited with code: 1 and signal: null
+[09:48:14.334] Error: Command "npm run build" exited with 1
+[09:48:14.697] 
