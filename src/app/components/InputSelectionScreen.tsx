@@ -91,7 +91,7 @@ export default function InputSelectionScreen({ onInputSubmit, setAppState }: Inp
                 ? "Describe your meal here..." 
                 : "Write your recipe here..."
               }
-              className="w-full h-64 p-4 rounded-lg border focus:ring-2 focus:ring-[#2E8B57] focus:border-transparent"
+              className="w-full h-64 p-4 rounded-lg border focus:ring-2 focus:ring-[#2E8B57] focus:border-transparent text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-800"
             />
           </div>
         )}

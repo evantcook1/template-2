@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { format } from 'date-fns';
 import { ChevronDown, ChevronUp, Trash2 } from 'lucide-react';
-import { useAI, HistoryEntry } from '../lib/contexts/AIContext';
+import { useAI, HistoryEntry } from '@/lib/contexts/AIContext';
 
 export default function HistoryView() {
   const { history, clearHistory } = useAI();
