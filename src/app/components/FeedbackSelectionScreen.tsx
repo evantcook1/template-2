@@ -43,6 +43,16 @@ const feedbackOptions: FeedbackOption[] = [
     id: 'strength-gains',
     label: 'Support Strength Gains',
     description: 'Enhance your meal for muscle building'
+  },
+  {
+    id: 'carb-control',
+    label: 'Carb Control',
+    description: 'Get suggestions on how to get total carbs of the meal to roughly 40 grams'
+  },
+  {
+    id: 'mediterranean',
+    label: 'Mediterranean',
+    description: 'Provide suggestions on how to align your meal with the Mediterranean Diet'
   }
 ];
 

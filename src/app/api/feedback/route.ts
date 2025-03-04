@@ -20,7 +20,9 @@ const feedbackTypeContext: Record<string, string> = {
   'whole30': 'ensuring compliance with Whole30 guidelines (no grains, legumes, dairy, added sugars)',
   'reduce-calories': 'maintaining nutritional density while reducing overall caloric intake',
   'fat-loss': 'optimizing macronutrient ratios for fat loss while preserving muscle mass',
-  'strength-gains': 'supporting muscle growth and recovery through optimal nutrition timing and composition'
+  'strength-gains': 'supporting muscle growth and recovery through optimal nutrition timing and composition',
+  'carb-control': 'targeting a total carbohydrate intake of approximately 40 grams for the meal to manage blood sugar levels and energy balance',
+  'mediterranean': 'aligning with Mediterranean Diet principles (emphasis on plant foods, healthy fats like olive oil, moderate fish and seafood, limited red meat and processed foods)'
 };
 
 /**
